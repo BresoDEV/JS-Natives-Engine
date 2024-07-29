@@ -1,0 +1,435 @@
+<!doctype html>
+<html lang="pt_br">
+
+<head>
+  <meta charset="utf-8">
+  <!-- Always force latest IE rendering engine or request Chrome Frame -->
+  <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Use title if it's in the page YAML frontmatter -->
+  <title>BresoDEV RPG Engine</title>
+
+  <meta name="description" content="BresoDEV Doc" />
+  <meta name="keywords" content="bresodev" />
+  <link href="all.css" rel="stylesheet" type="text/css" />
+</head>
+
+<style>
+  p {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  .codigo {
+
+    background-color: rgb(70, 70, 70);
+    color: aliceblue;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 5px 5px 10px rgb(0, 0, 0);
+    resize: none;
+    width: 100%;
+  }
+
+  .e {
+
+    background-color: rgb(70, 70, 70);
+    color: aliceblue;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 5px 5px 10px rgb(0, 0, 0);
+    resize: none;
+    width: 100%;
+  }
+
+  .vm {
+    color: rgb(200, 100, 100);
+  }
+
+  .vd {
+    color: rgb(100, 200, 100);
+  }
+
+  .az {
+    color: rgb(84, 84, 125);
+  }
+
+  .lrj {
+    color: rgb(223, 145, 34);
+  }
+
+  .am {
+    color: rgb(242, 255, 0);
+  }
+
+  .comentario {
+    color: rgb(24, 143, 93);
+  }
+
+  .cy {
+    color: rgb(7, 225, 221);
+  }
+
+  .ling {
+    color: rgb(255, 255, 255);
+    background-color: black;
+    width: 100%;
+  }
+
+  table {
+    width: 100%;
+
+  }
+
+  tr,
+  td {
+    border: 1px solid #666;
+    background-color: rgb(210, 210, 210);
+    padding: 5px;
+  }
+
+  button {
+    cursor: pointer;
+    font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+
+    width: 100%;
+    text-decoration: none;
+    padding: 5px;
+
+    background-color: #008cba;
+    color: white;
+    border: none;
+    font-weight: normal !important;
+    margin: 1px !important;
+    border-radius: 5px;
+  }
+
+  /*--------------------------------*/
+  .bg-vd {
+    background-color: rgb(20, 132, 63);
+  }
+
+  .bg-vm {
+    background-color: rgb(228, 77, 77);
+  }
+
+  /*--------------------------------*/
+  .hover-bg-vd:hover {
+    background-color: rgb(20, 132, 63);
+  }
+
+  .hover-bg-vm:hover {
+    background-color: rgb(228, 77, 77);
+  }
+
+  .hover-bg-az:hover {
+    background-color: #008cba;
+  }
+
+
+  .hover-bg-br:hover {
+    background-color: aliceblue;
+  }
+
+  .hover-bg-pt:hover {
+    background-color: rgb(0, 0, 0);
+  }
+
+  /*--------------------------------*/
+  .hover-f-vd:hover {
+    color: rgb(20, 132, 63);
+  }
+
+  .hover-f-vm:hover {
+    color: rgb(228, 77, 77);
+  }
+
+  .hover-f-az:hover {
+    color: #008cba;
+  }
+
+  .hover-f-br:hover {
+    color: aliceblue;
+  }
+
+  .hover-f-pt:hover {
+    color: rgb(0, 0, 0);
+  }
+
+  details {
+    background-color: #a39f9f;
+    padding: 10px;
+    border-radius: 7px;
+    margin-top: 2px;
+    color: rgb(0, 0, 0);
+    cursor: pointer;
+    transition: all 0.3s linear;
+  }
+
+  .details2 {
+    background-color: #c4e4ff;
+    padding: 10px;
+    border-radius: 7px;
+    margin-top: 2px;
+    color: black;
+    cursor: pointer;
+  }
+
+  summary {
+    font-weight: bolder;
+    list-style: none;
+  }
+
+  details:hover {
+    background-color: #abe8d9;
+    color: rgb(0, 0, 0);
+  }
+</style>
+
+<body>
+  <header class="contain-to-grid">
+    <nav class="top-bar" data-topbar>
+      <ul class="title-area">
+        <li class="name">
+          <h1><a href="index.html">Inicio</a></h1>
+        </li>
+      </ul>
+
+    </nav>
+  </header>
+  <div class="wrapper">
+    <div class="row">
+      <div class="large-12 columns">
+
+
+        <!---------------------------->
+        <details>
+          <summary>V1.0 - 20/07/2024</summary>
+          <p>Lançamento da versao beta</p>
+        </details>
+        <!---------------------------->
+        <details>
+          <summary>V1.01 - 21/07/2024</summary>
+
+          <h4><b><i>Adições:</i></b></h4>
+
+          <p><b>GET_ENTITY_COLLIDED</b>: Retorna o objeto que outro objeto colidiu</p>
+
+          <p><b>SHOOT_ENTITY</b>: Cria um projetil que vai em direção de um objeto</p>
+
+          <p><b>CREATE_SHOOT_TO_COORD</b>: Cria um projetil que vai em direção de uma coordenada</p>
+
+          <p><b>MAKE_ENTITY_FOLLOW_PLAYER</b>: Faz com que um elemento siga ou vá na direção do jogador</p>
+
+          <p><b>MAKE_ENTITY_FOLLOW_ENTITY</b>: Faz com que um elemento siga ou vá na direção de outro elemento</p>
+
+          <p><b>DESTROY_ENTITY_WHEN_COLLIDE_TO_ANY_ENTITY</b>: Faz com que um elemento se auto-destrua ao colidir com
+            qualquer bloco com colisão (não necessita ser chamada em loop)</p>
+
+          <p><b>GET_MAP_IMG</b>: Retorna o caminho da imagem do mapa atual</p>
+
+          <p><b>SET_MAP_IMG</b>: Define a imagem do mapa atual</p>
+
+          <p><b>DRAW_MINIMAP</b>: Exibe/oculta a miniatura do mapa atual atraves de uma tecla qualquer</p>
+
+          <p><b>ADD_KEYBOARD_EVENT</b>: Executa uma função atraves de uma tecla qualquer</p>
+
+          <p><b>GET_ALL_ENTITYS_WITH_COLLISION</b>: Retorna um array com todos elementos do mapa que possue colisão</p>
+
+          <p><b>SET_AS_ENEMY</b>: Define um elemento como inimigo, podendo perseguir ou não o jogador</p>
+
+          <p><b>SET_AS_FRIEND</b>: Define um elemento como amigo</p>
+
+          <p><b>GET_ALL_ENEMYS</b>: Retorna um array com todos elementos do mapa que são inimigos</p>
+
+          <p><b>GET_ALL_FRIENDS</b>: Retorna um array com todos elementos do mapa que são amigos</p>
+
+          <p><b>SET_ENTITY_NO_LONGER_NEEDED</b>: Deleta um elemento permanentemente ao sair do campo de visão</p>
+
+          <p><b>GET_DISTANCE_BETWEEN_ENTITYS</b>: Calcula a distancia entre 2 elementos</p>
+
+          <p><b>GET_DISTANCE_BETWEEN_COORDS</b>: Calcula a distancia entre 2 pontos</p>
+
+          <p><b>ATTACH_AUDIO_TO_ENTITY</b>: Linka um audio a um elemento(quanto mais perto do player, mais alto), dando
+            a sensação que o audio esta tocando no exato local do mapa</p>
+
+          <p><b>DRAW_LIGHT</b>: Cria uma luz artificial em um ponto do mapa</p>
+
+          <p><b>SET_LIGHT_SIZE</b>: Muda o tamanho de uma luz artificial</p>
+
+          <p><b>SET_LIGHT_COLOR</b>: Muda a cor de uma luz artificial</p>
+
+          <p><b>SET_PROGRESS_BAR_COLOR</b>: Muda a cor de uma progressbar</p>
+
+          <p><b>SET_PROGRESS_BAR_MAX_VALUE</b>: Muda o valor maximo de uma progressbar</p>
+
+          <p><b>SET_PROGRESS_BAR_MIN_VALUE</b>: Muda o valor minimo de uma progressbar</p>
+
+          <p><b>HIDE_MOUSE</b>: Oculta o cursor do mouse</p>
+
+          <p><b>SHOW_MOUSE</b>: Exibe o cursor do mouse</p>
+
+          <p><b>ADD_MOBILE_BUTTON</b>: Adiciona botoes extras para smartphones</p>
+
+          <p><b>SET_MOBILE_BUTTON_TEXT</b>: Muda o texto de botoes extras para smartphones</p>
+
+          <p><b>SET_MOBILE_BUTTON_BG_COLOR</b>: Muda a cor de fundo de botoes extras para smartphones</p>
+
+          <p><b>SET_MOBILE_BUTTON_FONT_COLOR</b>: Muda a cor da fonte de botoes extras para smartphones</p>
+
+          <p><b>DELETE_ALL_MOBILE_BUTTONS</b>: Deleta todos botoes extras para smartphones</p>
+
+          <p><b>GET_CLOSEST_FRIEND</b>: Retorna o elemento amigo mais próximo do player</p>
+
+          <p><b>GET_CLOSEST_ENEMY</b>: Retorna o elemento inimigo mais próximo do player</p>
+
+          <h4><b><i>Correções:</i></b></h4>
+
+          <p><b>GET_ENTITY_ROTATION</b>: Retorna um NUMBER, e não uma STRING, podendo manipular-lo com operações
+            matemáticas</p>
+
+          <p><b>DOES_ENTITY_EXIST</b>: Retorna corretamente, via objeto ou via id</p>
+
+          <p><b>DRAW_MINIMAP</b>: Adaptado para smartphones</p>
+
+          <p><b>PLAY_AUDIO</b>: Inicia sempre depois da interação. Antes não executava</p>
+        </details>
+        <!---------------------------->
+        <details>
+          <summary>V1.02 - 22/07/2024</summary>
+
+          <h4><b><i>Adições:</i></b></h4>
+
+          <p><b>DELETE_ALL_ENTITYS</b>: Deleta tudo do mapa</p>
+
+          <p><b>GET_ALL_MOBILE_BUTTONS</b>: Obtem um array com todos botoes mobile</p>
+
+          <p><b>GET_ALL_STATUSBARS</b>: Obtem um array com todos statusbars</p>
+
+          <p><b>GET_ALL_AUDIOS</b>: Obtem um array com todos audios</p>
+
+          <p><b>GET_ALL_PICKUPS</b>: Obtem um array com todos coletaveis</p>
+
+          <p><b>GET_ALL_PROGRESSBARS</b>: Obtem um array com todos progressbars</p>
+
+          <p><b>GET_ALL_LIGHTS</b>: Obtem um array com todas luzes</p>
+
+          <p><b>GET_ALL_RECTS</b>: Obtem um array com todos rects</p>
+
+          <p><b>GET_ALL_TEXTS</b>: Obtem um array com todos textos</p>
+
+          <p><b>GET_ALL_SPRITES</b>: Obtem um array com todas texturas</p>
+
+          <p><b>GET_ALL_ENTITYS</b>: Obtem um array com todos elementos criados</p>
+
+          <p><b>FLIP_SPRITE_HORIZONTAL</b>: Inverte uma textura horizontalmente</p>
+
+          <p><b>FLIP_SPRITE_VERTCAL</b>: Inverte uma textura verticalmente</p>
+
+          <p><b>FLIP_PLAYER_WHEN_MOVE</b>: Posiciona a textura do player de acordo com a direção de movimento</p>
+
+
+          <h4><b><i>Correções:</i></b></h4>
+        </details>
+        <!---------------------------->
+
+        <details>
+          <summary>V1.03 - 25/07/2024</summary>
+
+          <h4><b><i>Adições:</i></b></h4>
+
+          <p><b>SET_GAME_NAME</b>: Define o nome do jogo, utilizado em opções de saves</p>
+          <p><b>GET_GAME_NAME</b>: Obtem o nome do jogo, utilizado em opções de saves</p>
+          <p><b>DOES_GAME_NAME_AS_DEFINED</b>: Verifica se o nome do jogo ja foi definido</p>
+          <p><b>SAVE_INVENTORY_ITEM_QUANT</b>: Salva a quantidade de um item no sistema de inventário</p>
+          <p><b>ADD_INVENTORY_ITEM_QUANT</b>: Adiciona uma quantidade a mais, de um item no sistema de inventário</p>
+          <p><b>REMOVE_INVENTORY_ITEM_QUANT</b>: Remove uma quantidade de um item no sistema de inventário</p>
+          <p><b>PLAYER_HAVE_ITEM</b>: Verifica se o player tem uma quantidade de um item no sistema de inventário</p>
+          <p><b>GET_INVENTORY_ITEM_QUANT</b>: Retorna a quantidade de um item no sistema de inventário</p>
+          <p><b>SAVE_INVENTORY_ITEM_IMG</b>: Salva uma imagem em um item no sistema de inventário</p>
+          <p><b>GET_INVENTORY_ITEM_IMG</b>: Retorna a imagem de um item no sistema de inventário</p>
+          <p><b>CLEAR_ALL_INVENTORY</b>: Zera todas quantidades de itens do sistema de inventário</p>
+          <p><b>SET_ENTITY_VISIBLE</b>: Define se um elemento fica visível ou não</p>
+          <p><b>SET_CAMERA_FOCUS_ON_COORD</b>: Define a posição da camera a partir de uma coordenada</p>
+          <p><b>RESTORE_CAMERA_FOCUS_ON_PLAYER</b>: Re-define a posição da camera no player</p>
+
+          <p><b>GET_TOUCH_X_COORD</b>: Retorna a posição X do touch da tela em smartphones</p>
+          <p><b>GET_TOUCH_Y_COORD</b>: Retorna a posição Y do touch da tela em smartphones</p>
+          <p><b>ADD_VOID_TOUCHED_AT_AREA</b>: Executa algo quando o touch da tela for em uma area específica</p>
+          <p><b>ADD_VOID_TOUCHED_TO_ENTITY</b>: Executa algo quando o touch da tela for em um elemento</p>
+          <p><b>ADD_VOID_CLICK_TO_ENTITY</b>: Executa algo quando der um click em um elemento</p>
+
+
+
+          <h4><b><i>Correções:</i></b></h4>
+          <p><b>GET_ENTITY_Y_COORD_ON_SCREEN</b>: Retornando valor incorreto</p>
+          <p><b>GET_ENTITY_CENTER_Y_COORD_ON_SCREEN</b>: Retornando valor incorreto por causa do nativo acima</p>
+        </details>
+        <!---------------------------->
+        
+        <details>
+          <summary>V1.04 - 28/07/2024</summary>
+
+          <h4><b><i>Adições:</i></b></h4>
+
+          <p><b>DRAW_LINE_ON_ENTITY</b>: Desenha linhas guias em um elemento</p>
+          <p><b>DRAW_HORIZON_LINE</b>: Desenha linhas guias em uma coordenada horizontalmente</p>
+          <p><b>DRAW_VERT_LINE</b>: Desenha linhas guias em uma coordenada verticalmente</p>
+          <p><b>GET_HOOKS_RUNNING</b>: Retorna quantos hooks estão rodando atualmente, para monitoramento de desempenho</p>
+          <p><b>DRAW_FPS_DISPLAY</b>: Exibe os FPS no canto inferior direito da tela, para monitoramento de desempenho</p>
+          
+
+          <h4><b><i>Correções:</i></b></h4>
+          <p><b>DRAW_FPS_DISPLAY</b>: Adaptado para smartphones</p>
+          <p><b>SHOW_MOBILE_CONTROLS</b>: Controles melhorados para smartphones</p>
+          
+        </details>
+        <!---------------------------->
+
+
+
+
+
+
+
+        <hr>
+
+
+      </div>
+    </div>
+
+
+  </div>
+  <div class="row">
+    <div class="large-12 columns">
+      <p>
+      </p>
+    </div>
+  </div>
+  </div>
+  <footer class="footer row">
+    <div class="columns">
+      <div class="footer_lists-container row collapse">
+        <div class="footer_social columns large-2">
+          <p class="footer_copyright">Copyright (c) 2024, BresoDEV</p>
+        </div>
+        <ul class="footer_links columns large-9">
+          <!--
+            <li><a href="github.html">Github</a></li>
+          <li><a href="github.html">Github</a></li>
+          <li><a href="github.html">Github</a></li>
+          <li><a href="github.html">Github</a></li>
+          <li><a href="github.html">Github</a></li>
+          -->
+        </ul>
+      </div>
+    </div>
+  </footer>
+</body>
+<script>
+
+
+</script>
+
+</html>

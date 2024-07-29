@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    * {
+        padding: 0;
+        margin: 0;
+    }
+</style>
+
+<body>
+
+
+</body>
+<script src="engine.js"></script>
+<script src="menu.js"></script>
+<script>
+
+
+
+    const fundo = MAP.DRAW_MAP('res/imgs/fundo.png', 2000, 2000)
+    GAME.SET_GAME_NAME('My First Game')
+    MAP.DRAW_MINIMAP('m')
+    DEV.DRAW_FPS_DISPLAY();
+    LOG_HOOKS_RUNNING()
+    ADD_JOYSTICK()
+
+    const player = PLAYER.CREATE_PLAYER("res/imgs/player.png", 10, 10, 100, 100)
+    ENTITY.SET_ENTITY_ON_SCREEN_CENTER(player)
+    CONTROLS.ADD_PLAYER_AWSD_MOVIMENT(6)
+
+   
+    const inimigo = GRAPHICS.DRAW_SPRITE("res/imgs/inimigo.png", 900, 200, 100, 100)
+    ENTITY.SET_AS_FRIEND(inimigo)
+    CONTROLS.ADD_MOUSE_MOVE_TO_ENTITY(inimigo)
+
+
+
+
+    //aplly collision
+    const montanha = GRAPHICS.DRAW_SPRITE("res/imgs/montanha.png", 502, 550, 100, 300)
+    ENTITY.ADD_COLLISION_TO_ENTITY(montanha)
+    CONTROLS.ADD_MOUSE_MOVE_TO_ENTITY(montanha)
+
+
+    //pickup de vida
+    const PICKUP_CORACAO = PICKUP.CREATE_PICKUP_ITEM("res/imgs/vida.png", FUNCTIONS.GET_RANDON_INT(100,400), FUNCTIONS.GET_RANDON_INT(100,400), 30, 30)
+
+
+
+
+
+
+    
+    
+
+    
+
+    //STATUS_BAR()
+    const STATUS_BAR_ = STATUS_BAR.CREATE_STATUS_BAR()
+
+    var life = 50;
+    var mage = 100;
+
+    const STATUS_BAR_ITEM_1 = STATUS_BAR.ADD_STATUS_BAR_ITEM(life, 'green')
+    const STATUS_BAR_ITEM_2 = STATUS_BAR.ADD_STATUS_BAR_ITEM(mage, 'blue')
+
+
+    const PROGRESS_BAR = COMPONENT.CREATE_PROGRESS_BAR(400, 400, 100, 30, 'green')
+    var PROGRESS_BAR_Value = 100;
+    COMPONENT.SET_PROGRESS_BAR_VALUE(PROGRESS_BAR, PROGRESS_BAR_Value)
+
+
+    
+    
+
+    setInterval(() => {
+
+        if (ENTITY.IS_ENTITY_COLLIDED_TO_ENTITY(PLAYER.PLAYER_PED_ID(), inimigo)) {
+            if (life == 0) {
+                FUNCTIONS.RELOAD_GAME()
+            } else {
+                life--
+                COMPONENT.SET_PROGRESS_BAR_VALUE_WITH_COLOR(STATUS_BAR_ITEM_1, life)
+            }
+        }
+
+
+
+        if (ENTITY.IS_ENTITY_COLLIDED_TO_ENTITY(PLAYER.PLAYER_PED_ID(), PROGRESS_BAR)) {
+            //
+            if (life <= 100) {
+                if (PROGRESS_BAR_Value >= 1) {
+                    PROGRESS_BAR_Value--
+                    life++
+                    //
+                    COMPONENT.SET_PROGRESS_BAR_VALUE_WITH_COLOR(PROGRESS_BAR, PROGRESS_BAR_Value)
+                    COMPONENT.SET_PROGRESS_BAR_VALUE_WITH_COLOR(STATUS_BAR_ITEM_1, life)
+                }
+                //
+            }
+        }
+
+        if (PICKUP.IS_PICKUP_COLLECTED(PICKUP_CORACAO)) {
+            life = 100
+            COMPONENT.SET_PROGRESS_BAR_VALUE_WITH_COLOR(STATUS_BAR_ITEM_1, life)
+            ENTITY.DELETE_ENTITY(PICKUP_CORACAO)
+        }
+
+
+
+
+
+
+    }, 100);
+
+    setInterval(() => {
+        PROGRESS_BAR_Value++
+        COMPONENT.SET_PROGRESS_BAR_VALUE_WITH_COLOR(PROGRESS_BAR, PROGRESS_BAR_Value)
+    }, 2000);
+
+
+
+
+    
+    
+
+  
+
+    function LOG_HOOKS_RUNNING(){
+        if (DEV.GET_HOOKS_RUNNING() !== HOOKS_RUNNING) {
+            HOOKS_RUNNING = DEV.GET_HOOKS_RUNNING()
+            console.log('HOOKS_RUNNING: ' + HOOKS_RUNNING)
+        }
+        requestAnimationFrame(LOG_HOOKS_RUNNING)
+    }
+
+
+
+
+
+
+
+    const WEATHER = {
+        STOP_RAIN() {
+            var blocos = MAP.GET_MAP().querySelectorAll('*')
+            var bb = []
+            var colidiu = false
+            blocos.forEach(e => {
+                if (e.id.includes('chuva_')) {
+                    ENTITY.SET_ENTITY_NO_LONGER_NEEDED(e)
+                }
+            });
+        },
+        START_SNOW() {
+            WEATHER.START_RAIN(2, 'white', 4)
+        },
+        START_RAIN(intensidade = 3, cor = 'cyan', tam = 3) {
+            for (let i = 0; i < (50 * intensidade); i++) {
+                criarGota(cor, tam)
+            }
+            function criarGota(color, size) {
+                var a = FUNCTIONS.GET_RANDON_INT(-500, -10)
+                var f = document.createElement('div');
+                f.style.width = size + 'px';
+                f.style.backgroundColor = color;
+                f.style.height = size + 'px';
+                f.style.borderRadius = '150%';
+                f.style.margin = '0';
+                f.style.padding = '0';
+                f.style.position = 'absolute';
+                f.style.left = FUNCTIONS.GET_RANDON_INT(0, MAP.GET_Y_MAP_SIZE()) + 'px';
+                f.style.top = a + 'px';
+                f.id = 'chuva_' + FUNCTIONS.GET_RANDON_INT(0, 99999);
+                MAP.GET_MAP().append(f)
+                loop()
+                function loop() {
+                    a++
+                    f.style.top = a + 'px';
+                    if (a >= (SCREEN.GET_Y_SCREEN_SIZE() + 10)) {
+                        a = FUNCTIONS.GET_RANDON_INT(-500, -10)
+
+                    }
+                    requestAnimationFrame(loop)
+                }
+            }
+        },
+    }
+
+
+
+
+
+    
+
+    function ADD_JOYSTICK(speed = 6, color = 'aliceblue') {
+        const joystickFundo = document.createElement('div')
+        joystickFundo.style.position = 'fixed'
+        joystickFundo.style.backgroundColor = 'transparent'
+        joystickFundo.style.border = '3px solid ' + color
+        joystickFundo.style.width = '150px'
+        joystickFundo.style.height = '150px'
+        joystickFundo.style.borderRadius = '150%'
+        joystickFundo.style.top = (window.innerHeight - 160) + 'px'
+        joystickFundo.style.left = '10px'
+        //joystickFundo.style.boxShadow = '0px 0px 30px black'
+        joystickFundo.style.display = 'none'
+
+        document.body.appendChild(joystickFundo)
+
+
+        const joystick = document.createElement('div')
+        joystick.style.position = 'fixed'
+        joystick.style.backgroundColor = color
+        joystick.style.opacity = '0.5'
+        joystick.style.width = '50px'
+        joystick.style.height = '50px'
+        joystick.style.borderRadius = '150%'
+        joystick.style.top = (window.innerHeight - 110) + 'px'
+        joystick.style.left = '60px'
+
+        joystick.style.boxShadow = '10px 10px 30px black'
+
+        document.body.appendChild(joystick)
+
+
+        const showMapa = document.createElement('button')
+        showMapa.style.position = 'fixed'
+        showMapa.style.right = '10px'
+        showMapa.style.bottom = '10px'
+        showMapa.style.padding = '10px'
+        showMapa.style.fontSize = '20px'
+        showMapa.style.borderRadius = '4px'
+        showMapa.style.opacity = '0.8'
+        showMapa.style.border='none'
+        showMapa.innerHTML = 'Mapa'
+        document.body.appendChild(showMapa)
+
+
+
+        joystick.addEventListener('touchstart', () => {
+            estaComODedoNaTela = true
+            joystickFundo.style.display = 'block'
+            joystick.style.opacity = '0.9'
+        })
+
+        joystick.addEventListener('touchend', () => {
+            estaComODedoNaTela = false
+            joystick.style.top = (window.innerHeight - 110) + 'px'
+            joystick.style.left = '60px'
+            joystickFundo.style.display = 'none'
+            joystick.style.opacity = '0.5'
+        })
+
+        showMapa.addEventListener('touchstart', (e) => {
+                e.stopPropagation()
+                if (!ENTITY.DOES_ENTITY_EXIST('mapview')) {
+                    const mapview = document.createElement('img')
+                    mapview.src = MAP.GET_MAP_IMG()
+                    mapview.style.position = 'absolute'
+                    mapview.style.width = '80%'
+                    mapview.style.height = '60%'
+                    mapview.style.left = '10%'
+                    mapview.style.top = '20%'
+                    mapview.style.borderRadius = '3%'
+                    mapview.style.border = '5px solid black'
+                    mapview.id = 'mapview'
+                    document.body.appendChild(mapview)
+                }
+                else {
+                    ENTITY.DELETE_ENTITY(ENTITY.GET_ENTITY('mapview'))
+                }
+            })
+
+        joystick.addEventListener('touchmove', (e) => {
+            if (estaComODedoNaTela) {
+
+                if (e.touches[0].clientX < 130) {
+                    if (e.touches[0].clientX > 30) {
+
+                        if (e.touches[0].clientY > window.innerHeight - 130) {
+                            if (e.touches[0].clientY < window.innerHeight - 40) {
+                                joystick.style.left = ((e.touches[0].clientX) - 25) + 'px'
+                                joystick.style.top = ((e.touches[0].clientY) - 25) + 'px'
+                            }
+                        }
+
+                    }
+                }
+
+            }
+        })
+
+        var loop = setInterval(() => {
+            if (estaComODedoNaTela) {
+                if (joystick.offsetLeft < 40) {
+                    ENTITY.SAVE_ENTITY_COORDS(PLAYER.PLAYER_PED_ID())
+                    ENTITY.SAVE_ENTITY_COORDS(MAP.GET_MAP())
+
+                    PLAYER.MOVE_PLAYER_LEFT(speed)
+
+                    if (ENTITY.IS_ENTITY_COLLIDED_TO_ANY_COLLISION_BLOCK(PLAYER.PLAYER_PED_ID())) {
+                        ENTITY.RESTORE_ENTITY_COORDS(PLAYER.PLAYER_PED_ID())
+                        ENTITY.RESTORE_ENTITY_COORDS(MAP.GET_MAP())
+                    }
+                    if (FLIP_PLAYER) {
+                        PLAYER.PLAYER_PED_ID().style.transform = 'scaleX(-1)'
+                    }
+                }
+                if (joystick.offsetLeft > 80) {
+                    ENTITY.SAVE_ENTITY_COORDS(PLAYER.PLAYER_PED_ID())
+                    ENTITY.SAVE_ENTITY_COORDS(MAP.GET_MAP())
+
+                    PLAYER.MOVE_PLAYER_RIGHT(speed)
+
+                    if (ENTITY.IS_ENTITY_COLLIDED_TO_ANY_COLLISION_BLOCK(PLAYER.PLAYER_PED_ID())) {
+                        ENTITY.RESTORE_ENTITY_COORDS(PLAYER.PLAYER_PED_ID())
+                        ENTITY.RESTORE_ENTITY_COORDS(MAP.GET_MAP())
+                    }
+                    if (FLIP_PLAYER) {
+                        PLAYER.PLAYER_PED_ID().style.transform = 'scaleX(1)'
+                    }
+                }
+                if (joystick.offsetTop < window.innerHeight - 130) {
+                    ENTITY.SAVE_ENTITY_COORDS(PLAYER.PLAYER_PED_ID())
+                    ENTITY.SAVE_ENTITY_COORDS(MAP.GET_MAP())
+
+                    PLAYER.MOVE_PLAYER_UP(speed)
+
+
+                    if (ENTITY.IS_ENTITY_COLLIDED_TO_ANY_COLLISION_BLOCK(PLAYER.PLAYER_PED_ID())) {
+                        ENTITY.RESTORE_ENTITY_COORDS(PLAYER.PLAYER_PED_ID())
+                        ENTITY.RESTORE_ENTITY_COORDS(MAP.GET_MAP())
+                    }
+                }
+                if (joystick.offsetTop > window.innerHeight - 90) {
+                    ENTITY.SAVE_ENTITY_COORDS(PLAYER.PLAYER_PED_ID())
+                    ENTITY.SAVE_ENTITY_COORDS(MAP.GET_MAP())
+
+                    PLAYER.MOVE_PLAYER_DOWN(speed)
+
+                    if (ENTITY.IS_ENTITY_COLLIDED_TO_ANY_COLLISION_BLOCK(PLAYER.PLAYER_PED_ID())) {
+                        ENTITY.RESTORE_ENTITY_COORDS(PLAYER.PLAYER_PED_ID())
+                        ENTITY.RESTORE_ENTITY_COORDS(MAP.GET_MAP())
+                    }
+                }
+            }
+        }, 100);
+        hooks.push(loop)
+    }
+
+
+
+
+
+
+
+
+
+    /*
+    
+    //MenuPrincipal()
+            function MenuPrincipal() {
+                Menu('Menu Base', () => {
+    
+                    setInterval(() => {
+                        if (dummy) {
+                            dummy.position.set(dummyx, dummyy, dummyz);
+                        }
+                    }, 1);
+    
+                    addOption(() => {
+                        Button('Criar Dummy', () => {
+                            dummy = DRAW_BOX(false, 'madeira.jpeg', dummyx, dummyy, dummyz)
+    
+                        })
+                    })
+                    addOption(() => {
+                        Button('Criar Arvore', () => {
+                            BUILD_THREE(dummyx, dummyy, dummyz, dummyAltura)
+    
+                        })
+                    })
+                    addOption(() => {
+                        Button('Criar Chao', () => {
+                            // BUILD_THREE(dummyx,dummyy,dummyz,dummyAltura)
+                            DRAW_PLANE()
+                        })
+                    })
+                    addOption(() => {
+                        Button('Criar Ceu', () => {
+                            DRAW_SKYBOX()
+                        })
+                    })
+                    addOption(() => {
+                        Button('Criar Iluminacao', () => {
+                            DRAW_LIGHT()
+                        })
+                    })
+                    addOption(() => {
+                        Button('Criar Sol', () => {
+                            DRAW_SUN()
+                        })
+                    })
+    
+                    addOption(() => {
+                        Button('Criar Construcao', () => {
+                            BUILD_HOUSE(dummyx, dummyy, dummyz, dummyAltura)
+                        })
+                    })
+    
+                    addOption(() => {
+                        Titulo('X')
+                        InputRangeInt(dummyx, -10, 10, (x) => {
+                            dummyx = x;
+                        })
+    
+                    })
+                    addOption(() => {
+                        Titulo('Y')
+                        InputRangeInt(dummyy, -10, 10, (x) => {
+                            dummyy = x;
+                        })
+    
+                    })
+    
+                    addOption(() => {
+                        Titulo('Z')
+                        InputRangeInt(dummyz, -10, 10, (x) => {
+                            dummyz = x;
+                        })
+    
+                    })
+                    addOption(() => {
+                        Titulo('Altura')
+                        InputRangeInt(dummyAltura, 1, 10, (x) => {
+                            dummyAltura = x;
+                        })
+    
+                    })
+                    addBreak('')
+                    addOption(() => {
+                        Titulo('Nuvens')
+                        InputRangeInt(1, 1, 10, (x) => {
+                            veloCeu = x * 0.0005;
+                        })
+    
+                    })
+    
+                })
+            }
+    
+    
+    
+            */
+
+
+
+</script>
+
+</html>

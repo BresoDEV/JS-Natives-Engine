@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    html,
+    body {
+        background-color: rgb(255, 255, 255);
+    }
+</style>
+
+<body>
+
+</body>
+<script>
+    //window.innerHeight
+
+    var estaComODedoNaTela = false
+
+
+
+
+    const joystickFundo = document.createElement('div')
+    joystickFundo.style.position = 'fixed'
+    joystickFundo.style.backgroundColor = 'transparent'
+    joystickFundo.style.border = '3px solid gray'
+    joystickFundo.style.width = '150px'
+    joystickFundo.style.height = '150px'
+    joystickFundo.style.borderRadius = '150%'
+    joystickFundo.style.top = (window.innerHeight - 160) + 'px'
+    joystickFundo.style.left = '10px'
+    //joystickFundo.style.boxShadow = '0px 0px 30px black'
+    joystickFundo.style.display = 'none'
+
+    document.body.appendChild(joystickFundo)
+
+
+    const joystick = document.createElement('div')
+    joystick.style.position = 'fixed'
+    joystick.style.backgroundColor = '#666'
+    joystick.style.opacity = '0.5'
+    joystick.style.width = '50px'
+    joystick.style.height = '50px'
+    joystick.style.borderRadius = '150%'
+    joystick.style.top = (window.innerHeight - 110) + 'px'
+    joystick.style.left = '60px'
+
+    joystick.style.boxShadow = '10px 10px 30px black'
+
+    document.body.appendChild(joystick)
+
+
+
+    joystick.addEventListener('touchstart', () => {
+        estaComODedoNaTela = true
+        joystickFundo.style.display = 'block'
+        joystick.style.opacity = '0.9'
+    })
+
+    joystick.addEventListener('touchend', () => {
+        estaComODedoNaTela = false
+        joystick.style.top = (window.innerHeight - 110) + 'px'
+        joystick.style.left = '60px'
+        joystickFundo.style.display = 'none'
+        joystick.style.opacity = '0.5'
+    })
+
+    joystick.addEventListener('touchmove', (e) => {
+        if (estaComODedoNaTela) {
+
+            if (e.touches[0].clientX < 130) {
+                if (e.touches[0].clientX > 40) {
+
+                    if (e.touches[0].clientY > window.innerHeight - 130) {
+                        if (e.touches[0].clientY < window.innerHeight -40) {
+                            joystick.style.left = ((e.touches[0].clientX) - 25) + 'px'
+                            joystick.style.top = ((e.touches[0].clientY) - 25) + 'px'
+                        }
+                    }
+
+                }
+            }
+
+        }
+    })
+
+    var loop = setInterval(() => {
+        if(estaComODedoNaTela){
+            if(joystick.offsetLeft < 40){
+                console.log('esq')
+            }
+            if(joystick.offsetLeft > 80){
+                console.log('dir')
+            }
+            if(joystick.offsetTop < window.innerHeight - 130){
+                console.log('cima')
+            }
+            if(joystick.offsetTop > window.innerHeight - 90){
+                console.log('baixo')
+            }
+        }
+    }, 100);
+     
+
+</script>
+
+</html>

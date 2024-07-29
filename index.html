@@ -1,0 +1,2923 @@
+<!doctype html>
+<html lang="pt_br">
+
+<head>
+      <meta charset="utf-8">
+      <!-- Always force latest IE rendering engine or request Chrome Frame -->
+      <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+      <!-- Use title if it's in the page YAML frontmatter -->
+      <title>BresoDEV RPG Engine</title>
+
+      <meta name="description" content="BresoDEV Doc" />
+      <meta name="keywords" content="bresodev" />
+      <link href="all.css" rel="stylesheet" type="text/css" />
+</head>
+
+<style>
+      p {
+            margin-top: 0;
+            margin-bottom: 0;
+      }
+
+      .codigo {
+
+            background-color: rgb(70, 70, 70);
+            color: aliceblue;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 5px 5px 10px rgb(0, 0, 0);
+            resize: none;
+            width: 100%;
+            word-break: break-all;
+      }
+
+      .e {
+
+            background-color: rgb(70, 70, 70);
+            color: aliceblue;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 5px 5px 10px rgb(0, 0, 0);
+            resize: none;
+            width: 100%;
+      }
+
+      .vm {
+            color: rgb(200, 100, 100);
+      }
+
+      .vd {
+            color: rgb(100, 200, 100);
+      }
+
+      .az {
+            color: rgb(84, 84, 125);
+      }
+
+      .lrj {
+            color: rgb(223, 145, 34);
+      }
+
+      .am {
+            color: rgb(242, 255, 0);
+      }
+
+      .comentario {
+            color: rgb(24, 143, 93);
+      }
+
+      .cy {
+            color: rgb(7, 225, 221);
+      }
+
+      .ling {
+            color: rgb(255, 255, 255);
+            background-color: black;
+            width: 100%;
+      }
+
+      table {
+            width: 100%;
+
+      }
+
+      tr,
+      td {
+            border: 1px solid #666;
+            background-color: rgb(210, 210, 210);
+            padding: 5px;
+      }
+
+      button {
+            cursor: pointer;
+            font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+
+            width: 100%;
+            text-decoration: none;
+            padding: 5px;
+
+            background-color: #008cba;
+            color: white;
+            border: none;
+            font-weight: normal !important;
+            margin: 1px !important;
+            border-radius: 5px;
+      }
+
+      /*--------------------------------*/
+      .bg-vd {
+            background-color: rgb(20, 132, 63);
+      }
+
+      .bg-vm {
+            background-color: rgb(228, 77, 77);
+      }
+
+      /*--------------------------------*/
+      .hover-bg-vd:hover {
+            background-color: rgb(20, 132, 63);
+      }
+
+      .hover-bg-vm:hover {
+            background-color: rgb(228, 77, 77);
+      }
+
+      .hover-bg-az:hover {
+            background-color: #008cba;
+      }
+
+
+      .hover-bg-br:hover {
+            background-color: aliceblue;
+      }
+
+      .hover-bg-pt:hover {
+            background-color: rgb(0, 0, 0);
+      }
+
+      /*--------------------------------*/
+      .hover-f-vd:hover {
+            color: rgb(20, 132, 63);
+      }
+
+      .hover-f-vm:hover {
+            color: rgb(228, 77, 77);
+      }
+
+      .hover-f-az:hover {
+            color: #008cba;
+      }
+
+      .hover-f-br:hover {
+            color: aliceblue;
+      }
+
+      .hover-f-pt:hover {
+            color: rgb(0, 0, 0);
+      }
+
+      details {
+            background-color: #a39f9f;
+            padding: 10px;
+            border-radius: 7px;
+            margin-top: 2px;
+            color: rgb(0, 0, 0);
+            cursor: pointer;
+            transition: all 0.3s linear;
+      }
+
+      .details2 {
+            word-break: break-all;
+            background-color: #c4e4ff;
+            padding: 10px;
+            border-radius: 7px;
+            margin-top: 2px;
+            color: black;
+            cursor: pointer;
+      }
+
+      summary {
+            font-weight: bolder;
+            list-style: none;
+      }
+
+      details:hover {
+            background-color: #abe8d9;
+            color: rgb(0, 0, 0);
+      }
+</style>
+
+<body>
+      <header class="contain-to-grid">
+            <nav class="top-bar" data-topbar>
+                  <ul class="title-area">
+                        <li class="name">
+                              <h1><a href="index.html">Inicio</a></h1>
+                        </li>
+                  </ul>
+
+            </nav>
+      </header>
+      <div class="wrapper">
+            <div class="row">
+                  <div class="large-12 columns">
+                        <br>
+                        <h2>Sobre:</h2>
+                  </div>
+            </div>
+            <div class="row">
+                  <div class="large-12 columns">
+                        <p>
+                              Bem vindo(a) ao BresoDEV RPG Engine, uma poderosa engine escrita em Javascript puro, para
+                              a criação
+                              de
+                              jogos RPG 2D. Nessa engine, você vai ter em suas mãos, uma grande variedade de funcoes
+                              prontas para
+                              facilitar
+                              a criação de seu jogo. Veja abaixo como implementar, toda documentação de todas funcoes
+                              disponíveis,
+                              além
+                              de uma pquena demo, mostrando na prática algumas das mecânicas de movimento, inimigos,
+                              vida, etc...
+                        </p>
+                        <p><b>Apesar dessa ferramenta ter sido desenvolvida, voltada para RPGs, você pode criar qualquer
+                                    tipo de
+                                    jogo,
+                                    basta usar
+                                    sua criatividade!!</b>
+                        </p>
+                        <br>
+                        <center>
+                              <a href="engine.html"><button class="bg-vd">Demo</button></a>
+                              <a href="changelog.html"><button class="bg-vd">Changelog e Atualizações</button></a>
+                        </center>
+                        <hr>
+
+
+
+                        <hr>
+                        <h3>Como implementar?</h3>
+                        <p>1: Crie um arquivo Javascript no diretorio do seu projeto, com o nome <b>"engine.js"</b>.</p>
+                        <br>
+                        <p>2: <a href="engine.js" target="_blank" rel="noopener noreferrer">Clique aqui</a> e copie todo
+                              código.
+                        </p><br>
+                        <p>3: Cole no arquivo <b>"engine.js"</b> e salve.</p><br>
+                        <p>4: Logo abaixo do fechamento da tag BODY, cole o codigo abaixo:</p><br>
+                        <p class="codigo">
+
+                              <font class="cy">&#60;script&nbsp;src=</font>
+                              <font class="lrj">"engine.js"</font>
+                              <font class="cy">&#62;&#60;/script&#62;</font><br>
+
+                              <font class="cy">&#60;script&#62;</font><br>
+                              <font class="vd">&nbsp;&nbsp;&nbsp;&nbsp;//Seu codigo vai aqui!!</font><br>
+                              <font class="cy">&#62;&#60;/script&#62;</font><br>
+
+                        </p><br>
+                        <p>Pronto! Ja pode dar inicio ao seu RPG</p>
+                        <br>
+                        <hr>
+                        <h3>Natives Database</h3>
+
+                        <div id="nativos">
+
+                        </div>
+
+
+
+
+                  </div>
+            </div>
+
+      </div>
+      <div class="row">
+            <div class="large-12 columns">
+                  <p>
+                  </p>
+            </div>
+      </div>
+      </div>
+      <footer class="footer row">
+            <div class="columns">
+                  <div class="footer_lists-container row collapse">
+                        <div class="footer_social columns large-2">
+                              <p class="footer_copyright">Copyright (c) 2024, BresoDEV</p>
+                        </div>
+                        <ul class="footer_links columns large-9">
+                              <!--
+            <li><a href="github.html">Github</a></li>
+          <li><a href="github.html">Github</a></li>
+          <li><a href="github.html">Github</a></li>
+          <li><a href="github.html">Github</a></li>
+          <li><a href="github.html">Github</a></li>
+          -->
+                        </ul>
+                  </div>
+            </div>
+      </footer>
+</body>
+
+<script>
+
+      var itens = [
+
+
+            [
+                  'ENTITY',
+                  'GET_ENTITY_COLLIDED',
+                  'Retorna o objeto que outro objeto colidiu<br>Antes, deve-se verificar se colidiu com algo, usando <b>IS_ENTITY_COLLIDED_TO_ANY_COLLISION_BLOCK</b>',
+                  'entity',//parametros
+                  `
+            entity = Elemento a ser utilizado
+            `,
+                  `
+            var obj = ENTITY.GET_ENTITY_COLLIDED(PLAYER.PLAYER_PED_ID())
+            `
+            ],
+
+            [
+                  'ENTITY',
+                  'SHOOT_ENTITY',
+                  'Cria um projetil que vai em direção de um objeto',
+                  'textura, w, h, entity, velocidade',
+                  `
+            <p><b>textura</b>: Textura do projetil</p>
+              <p><b>w</b>: Largura do projetil</p>
+              <p><b>h</b>: Altura do projetil</p>
+              <p><b>entity</b>: Elemento a ser aplicado</p>
+              <p><b>velocidade</b>: Velocidade do tiro</p>
+            `,
+                  `
+            ENTITY.SHOOT_ENTITY('tiro.png',10,10,document.getElementById( "inimigo"),2);
+            `
+            ],
+
+            [
+                  'FUNCTIONS',
+                  'CREATE_SHOOT_TO_COORD',
+                  'Cria um projetil que vai em direção de uma coordenada',
+                  'textura, w, h, destinationX, destinationY, velocidade,destroyEntityCollided',
+                  `
+            <p><b>textura</b>: Textura do projetil</p>
+              <p><b>w</b>: Largura do projetil</p>
+              <p><b>h</b>: Altura do projetil</p>
+              <p><b>destinationX</b>: Coordenada X</p>
+              <p><b>destinationY</b>: Coordenada Y</p>
+              <p><b>velocidade</b>: Velocidade do tiro</p>
+              <p><b>destroyEntityCollided</b>: Destroi ou nao o alvo</p>
+            `,
+                  `
+                  FUNCTIONS.CREATE_SHOOT_TO_COORD('tiro.png',10,10,200,200,2,true);
+            `
+            ],
+
+            [
+                  'ENTITY',//namespace
+                  'SAVE_ENTITY_COORDS',//nome do nativo
+                  'Serve para salvar temporariamente, a posição de um elemento',//descricao do nativo
+                  'entity',//parametros
+                  `
+            <p><b>entity</b>: Elemento a ser aplicado</p>
+            `,
+                  `
+            ENTITY.
+              SAVE_ENTITY_COORDS(
+              document.getElementById(
+              "meu_elemento"
+              ))
+              ;
+            `
+            ],
+
+            [
+                  'ENTITY',//namespace
+                  'RESTORE_ENTITY_COORDS',//nome do nativo
+                  'Serve para restaurar a posição salva de um elemento (se existir)<br>Para salvar, use <b>SAVE_ENTITY_COORDS</b>',//descricao do nativo
+                  'entity',//parametros
+                  `
+            <p><b>entity</b> = Elemento a ser aplicado</p>
+            `,
+                  `
+            ENTITY.
+              RESTORE_ENTITY_COORDS(
+              document.getElementById(
+              "meu_elemento"
+              ))
+              ;
+            `
+            ],
+
+            [
+                  'ENTITY',//namespace
+                  'IS_ENTITY_COLLIDED_TO_ANY_COLLISION_BLOCK',//nome do nativo
+                  'Serve para verificar se um elemento colidiu com um bloco de colisão.<br>Para saber mais sobre blocos de colisão, veja ADD_COLLISION_TO_ENTITY',//descricao do nativo
+                  'entity',//parametros
+                  `
+            <p>entity = Elemento a ser aplicado a verificação</p>
+            `,
+                  `
+            if (
+  ENTITY.
+  IS_ENTITY_COLLIDED_TO_ANY_COLLISION_BLOCK(
+  document.getElementById(
+  "meu_elemento"
+  ))) {
+  &nbsp;&nbsp;&nbsp;&nbsp;//bateu
+  }
+            `
+            ],
+
+            [
+                  'ENTITY',//namespace
+                  'IS_VISIBLE',//nome do nativo
+                  'Serve para verificar se um elemento está visivel na tela.',//descricao do nativo
+                  'entity',//parametros
+                  'entity = Elemento a ser aplicado a verificação',
+                  `
+            if (
+  ENTITY.
+  IS_VISIBLE(
+  document.getElementById(
+  "meu_elemento"
+  ))) {
+  &nbsp;&nbsp;&nbsp;&nbsp;//esta visivel
+  }
+            `
+            ],
+
+            [
+                  'ENTITY',//namespace
+                  'SET_ENTITY_ON_SCREEN_CENTER',//nome do nativo
+                  'Serve para posicionar um elemento no centro da tela.',//descricao do nativo
+                  'entity',//parametros
+                  `
+            entity = Elemento a ser aplicado a verificação
+            `,
+                  `
+            ENTITY.
+  SET_ENTITY_ON_SCREEN_CENTER(
+  document.getElementById(
+  "meu_elemento"
+  ));
+            `
+            ],
+
+            [
+                  'ENTITY',//namespace
+                  'SET_ENTITY_SIZE',//nome do nativo
+                  'Serve para definir a largura e altura de um elemento.',//descricao do nativo
+                  'entity, x, y',//parametros
+                  `
+            entity = Elemento a ser aplicado<br>
+            x = Largura a ser aplicada no elemento<br>
+            y = Altura a ser aplicada no elemento<br>
+            `,
+                  `
+            //100px por 100px<br>
+  ENTITY.
+  SET_ENTITY_SIZE(
+  document.getElementById(
+  "meu_elemento"
+  ,100,100
+  ));
+            `
+            ],
+
+            [
+                  'ENTITY',//namespace
+                  'SET_ENTITY_TEXTURE',//nome do nativo
+                  'Serve para definir a textura de um elemento.',//descricao do nativo
+                  'entity, textura',//parametros
+                  `
+            entity = Elemento a ser aplicado<br>
+            textura = Caminho da textura a ser aplicada no elemento
+            `,
+                  `
+            ENTITY.
+  SET_ENTITY_TEXTURE(
+  document.getElementById(
+  "meu_elemento"
+  ,
+  "novaImg.png"
+  ));
+            `
+            ],
+
+            [
+                  'ENTITY',//namespace
+                  'GET_ENTITY_ALPHA',//nome do nativo
+                  'Serve para obter a opacidade de um elemento.',//descricao do nativo
+                  'entity',//parametros
+                  `
+            entity = Elemento a ser aplicado
+            `,
+                  `
+            console.log(
+  ENTITY.
+  GET_ENTITY_ALPHA(
+  document.getElementById(
+  "meu_elemento"
+  )));
+            `
+            ],
+
+            [
+                  'ENTITY',//namespace
+                  'SET_ENTITY_ALPHA',//nome do nativo
+                  'Serve para aplicar uma opacidade a um elemento.',//descricao do nativo
+                  'entity, alpha',//parametros
+                  `
+            entity = Elemento a ser aplicado<br>
+            alpha = Valor a ser aplicado (0 a 100)
+            `,
+                  `
+            ENTITY.
+  SET_ENTITY_ALPHA(
+  document.getElementById(
+  "meu_elemento"
+  ,60
+  ));
+            `
+            ],
+
+            [
+                  'ENTITY',//namespace
+                  'GET_ENTITY_ROTATION',//nome do nativo
+                  'Serve para obter a rotação de um elemento.',//descricao do nativo
+                  'entity',//parametros
+                  `
+            entity = Elemento a ser aplicado
+            `,
+                  `
+            console.log(
+  ENTITY.
+  GET_ENTITY_ROTATION(
+  document.getElementById(
+  "meu_elemento"
+  )));
+            `
+            ],
+
+            [
+                  'ENTITY',//namespace
+                  'SET_ENTITY_ROTATION',//nome do nativo
+                  'Serve para aplicar uma rotação a um elemento.',//descricao do nativo
+                  'entity, angulo',//parametros
+                  `
+            entity = Elemento a ser aplicado<br>
+            angulo = Valor a ser aplicado (0 a 360)
+            `,
+                  `
+            ENTITY.
+  SET_ENTITY_ROTATION(
+  document.getElementById(
+  "meu_elemento"
+  ,90
+  ));
+            `
+            ],
+
+            [
+                  'ENTITY',//namespace
+                  'SET_ENTITY_BACKCOLOR',//nome do nativo
+                  'Serve para aplicar uma cor de fundo a um elemento.',//descricao do nativo
+                  'entity, color',//parametros
+                  `
+            entity = Elemento a ser aplicado<br>
+           color = Cor a ser aplicada (nome ou rgb)
+            `,
+                  `
+            ENTITY.
+  SET_ENTITY_BACKCOLOR(
+  document.getElementById(
+  "meu_elemento"
+  ,
+  "red"
+  ));
+            `
+            ],
+
+            [
+                  'ENTITY',//namespace
+                  'DELETE_ENTITY',//nome do nativo
+                  'Serve para deletar um elemento.',//descricao do nativo
+                  'entity',//parametros
+                  `
+            entity = Elemento a ser utilizado<br>
+            `,
+                  `
+            ENTITY.
+  DELETE_ENTITY(
+  document.getElementById(
+  "meu_elemento"
+  ));
+            `
+            ],
+
+            [
+                  'ENTITY',//namespace
+                  'GET_ENTITY',//nome do nativo
+                  'Serve para obter um elemento.<br>Substitue o <b>document.getElementById</b>',//descricao do nativo
+                  'entity',//parametros
+                  `
+            entity = Elemento a ser obtido (ID ou Variavel)
+            `,
+                  `
+            var
+  meu_elemento
+  = ENTITY.
+  GET_ENTITY(
+  "meu_elemento"
+  );
+            `
+            ],
+
+            [
+                  'ENTITY',//namespace
+                  'MOVE_ENTITY_TO_COORDS_WITH_DELAY',//nome do nativo
+                  'Serve para movimentar um elemento pelo mapa.',//descricao do nativo
+                  'entity, x, y, tempo, tipo',//parametros
+                  `
+            entity = Elemento a ser obtido (ID ou Variavel)<br>
+            x = Posição X final<br>
+            y = Posição Y final<br>
+            tempo = Tempo de execução (padrao = 1)<br>
+            tipo = Tipo de movimento (padrao = 'linear')<br>
+            `,
+                  `
+            //Movimenta o elemento ate x=300 e y=400<br>
+  ENTITY.
+  MOVE_ENTITY_TO_COORDS_WITH_DELAY(
+  "meu_elemento"
+  ,300,400
+  );
+            `
+            ],
+
+            [
+                  'ENTITY',//namespace
+                  'GET_ENTITY_SIZE',//nome do nativo
+                  'Serve para obter o tamanho de um elemento.',//descricao do nativo
+                  'entity',//parametros
+                  `
+            entity = Elemento a ser utilizado
+            `,
+                  `
+            //Largura:<br>
+  console.log(
+  ENTITY.
+  GET_ENTITY_SIZE(
+  document.getElementById(
+  "meu_elemento"
+  ))
+  .x
+  );
+  <br><br>
+  //Altura:<br>
+  console.log(
+  ENTITY.
+  GET_ENTITY_SIZE(
+  document.getElementById(
+  "meu_elemento"
+  ))
+  .y
+  );
+            `
+            ],
+
+            [
+                  'ENTITY',//namespace
+                  'GET_ENTITY_X_COORD',//nome do nativo
+                  'Serve para obter a posicao X de um elemento relativo ao mapa.',//descricao do nativo
+                  'entity',//parametros
+                  `
+            entity = Elemento a ser utilizado
+            `,
+                  `
+            console.log(
+  ENTITY.
+  GET_ENTITY_X_COORD(
+  document.getElementById(
+  "meu_elemento"
+  )));
+            `
+            ],
+
+            [
+                  'ENTITY',//namespace
+                  'GET_ENTITY_Y_COORD',//nome do nativo
+                  'Serve para obter a posicao Y de um elemento relativo ao mapa.',//descricao do nativo
+                  'entity',//parametros
+                  `
+            entity = Elemento a ser utilizado
+            `,
+                  `
+            console.log(
+  ENTITY.
+  GET_ENTITY_Y_COORD(
+  document.getElementById(
+  "meu_elemento"
+  )));
+            `
+            ],
+
+            [
+                  'ENTITY',//namespace
+                  'GET_ENTITY_CENTER_X_COORD',//nome do nativo
+                  'Serve para obter a posicao central X de um elemento relativo ao mapa.',//descricao do nativo
+                  'entity',//parametros
+                  `
+            entity = Elemento a ser utilizado
+            `,
+                  `
+            console.log(
+  ENTITY.
+  GET_ENTITY_CENTER_X_COORD(
+  document.getElementById(
+  "meu_elemento"
+  )));
+            `
+            ],
+
+            [
+                  'ENTITY',//namespace
+                  'GET_ENTITY_CENTER_Y_COORD',//nome do nativo
+                  'Serve para obter a posicao central Y de um elemento relativo ao mapa.',//descricao do nativo
+                  'entity',//parametros
+                  `
+            entity = Elemento a ser utilizado
+            `,
+                  `
+            console.log(
+  ENTITY.
+  GET_ENTITY_CENTER_Y_COORD(
+  document.getElementById(
+  "meu_elemento"
+  )));
+            `
+            ],
+
+            [
+                  'ENTITY',//namespace
+                  'GET_ENTITY_X_COORD_ON_SCREEN',//nome do nativo
+                  'Serve para obter a posicao X de um elemento relativo a tela.',//descricao do nativo
+                  'entity',//parametros
+                  `
+            entity = Elemento a ser utilizado
+            `,
+                  `
+            console.log(
+  ENTITY.
+  GET_ENTITY_X_COORD_ON_SCREEN(
+  document.getElementById(
+  "meu_elemento"
+  )));
+            `
+            ],
+
+            [
+                  'ENTITY',//namespace
+                  'GET_ENTITY_Y_COORD_ON_SCREEN',//nome do nativo
+                  'Serve para obter a posicao Y de um elemento relativo a tela.',//descricao do nativo
+                  'entity',//parametros
+                  `
+            entity = Elemento a ser utilizado
+            `,
+                  `
+            console.log(
+  ENTITY.
+  GET_ENTITY_Y_COORD_ON_SCREEN(
+  document.getElementById(
+  "meu_elemento"
+  )));
+            `
+            ],
+
+            [
+                  'ENTITY',//namespace
+                  'GET_ENTITY_CENTER_X_COORD_ON_SCREEN',//nome do nativo
+                  'Serve para obter a posicao central X de um elemento relativo a tela.',//descricao do nativo
+                  'entity',//parametros
+                  `
+            entity = Elemento a ser utilizado
+            `,
+                  `
+            console.log(
+  ENTITY.
+  GET_ENTITY_CENTER_X_COORD_ON_SCREEN(
+  document.getElementById(
+  "meu_elemento"
+  )));
+            `
+            ],
+            [
+                  'ENTITY',//namespace
+                  'GET_ENTITY_CENTER_Y_COORD_ON_SCREEN',//nome do nativo
+                  'Serve para obter a posicao central Y de um elemento relativo a tela.',//descricao do nativo
+                  'entity',//parametros
+                  `
+            entity = Elemento a ser utilizado
+            `,
+                  `
+            console.log(
+  ENTITY.
+  GET_ENTITY_CENTER_Y_COORD_ON_SCREEN(
+  document.getElementById(
+  "meu_elemento"
+  )));
+            `
+            ],
+
+            [
+                  'ENTITY',//namespace
+                  'DOES_ENTITY_EXIST',//nome do nativo
+                  'Serve para verificar se um elemento existe.',//descricao do nativo
+                  'entity',//parametros
+                  `
+            entity = Elemento a ser utilizado
+            `,
+                  `
+            if (
+  ENTITY.
+  DOES_ENTITY_EXIST(
+  document.getElementById(
+  "meu_elemento"
+  ))) {<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;//existe<br>
+  }
+            `
+            ],
+
+            [
+                  'ENTITY',//namespace
+                  'IS_ENTITY_COLLIDED_TO_ENTITY',//nome do nativo
+                  'Serve para verificar se um elemento colidiu com outro.',//descricao do nativo
+                  'entity1, entity2',//parametros
+                  `
+            entity1 = Elemento 1 a ser utilizado<br>
+            entity2 = Elemento 2 a ser utilizado
+            `,
+                  `
+            if ()
+            ENTITY.
+  IS_ENTITY_COLLIDED_TO_ENTITY(
+  document.getElementById(
+  "meu_elemento"
+  )
+  ,
+  document.getElementById(
+  "meu_elemento"
+  )
+  )) {<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;//colidiu<br>
+  }
+            `
+            ],
+
+            [
+                  'ENTITY',//namespace
+                  'IS_ENTITY_NEAR_ENTITY',//nome do nativo
+                  'Serve para verificar se um elemento está próximo outro.',//descricao do nativo
+                  'entity1, entity2, distancia',//parametros
+                  `
+            entity1 = Elemento 1 a ser utilizado<br>
+            entity2 = Elemento 2 a ser utilizado<br>
+            distancia = Distancia (padrao = 5)
+            `,
+                  `
+            if (
+  ENTITY.
+  IS_ENTITY_NEAR_ENTITY(
+  document.getElementById(
+  "meu_elemento"
+  )
+  ,
+  document.getElementById(
+  "meu_elemento"
+  )
+  ,5
+  )) {<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;//está perto<br>
+  }
+            `
+            ],
+
+            [
+                  'ENTITY',//namespace
+                  'IS_ENTITY_AT_COORD',//nome do nativo
+                  'Serve para verificar se um elemento está em uma posição.',//descricao do nativo
+                  'entity, x, y, radius',//parametros
+                  `
+            entity = Elemento a ser aplicado a verificação<br>
+  x = Posição X<br>
+  y = Posição Y<br>
+  radius = Raio da distancia
+            `,
+                  `
+            // posição 300x400 com raio de 5px<br>
+  if (
+  ENTITY.
+  IS_ENTITY_AT_COORD(
+  document.getElementById(
+  "meu_elemento"
+  )
+  ,300, 400, 5
+  )) {<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;//está perto<br>
+  }
+            `
+            ],
+
+            [
+                  'ENTITY',//namespace
+                  'SET_ENTITY_COORD',//nome do nativo
+                  'Serve para reposicionar um elemento pelo mapa',//descricao do nativo
+                  'entity, x, y',//parametros
+                  `
+            entity = Elemento a ser obtido (ID ou Variavel)<br>
+  x = Posição X<br>
+  y = Posição Y
+            `,
+                  `
+            //Move o elemento ate x=300 e y=400<br>
+  ENTITY.SET_ENTITY_COORD("meu_elemento",300,400);
+            `
+            ],
+
+            [
+                  'MAP',//namespace
+                  'GET_MAP',//nome do nativo
+                  'Serve para obter o mapa atual.',//descricao do nativo
+                  ' ',//parametros
+                  `
+            Nenhum
+            `,
+                  `
+            const
+  meu_mapa
+  = MAP.
+  GET_MAP();
+            `
+            ],
+
+            [
+                  'MAP',//namespace
+                  'GET_X_MAP_SIZE',//nome do nativo
+                  'Serve para obter tamanho X do mapa.',//descricao do nativo
+                  ' ',//parametros
+                  `
+            Nenhum
+            `,
+                  `
+            console.log(
+  MAP.
+  GET_X_MAP_SIZE());
+            `
+            ],
+
+
+            [
+                  'MAP',//namespace
+                  'GET_Y_MAP_SIZE',//nome do nativo
+                  'Serve para obter tamanho Y do mapa.',//descricao do nativo
+                  ' ',//parametros
+                  `
+            Nenhum
+            `,
+                  `
+            console.log(
+  MAP.
+  GET_Y_MAP_SIZE());
+            `
+            ],
+
+            [
+                  'MAP',//namespace
+                  'DRAW_MAP',//nome do nativo
+                  'Serve para desenhar o mapa.',//descricao do nativo
+                  'src, w, h',//parametros
+                  `
+            src = Caminho da imagem de fundo<br>
+  w = Largura<br>
+  h = Altura<br>
+            `,
+                  `
+            const mapa = MAP.DRAW_MAP('fundo.png',2000,1000);
+            `
+            ],
+
+            [
+                  'PLAYER',//namespace
+                  'CREATE_PLAYER',//nome do nativo
+                  'Serve para criar o player principal',//descricao do nativo
+                  'src, x, y, w, h',//parametros
+                  `
+            src = Caminho da imagem de fundo<br>
+  x = Posicao X<br>
+  y = Posicao Y<br>
+  w = Largura<br>
+  h = Altura
+            `,
+                  `
+            const player = PLAYER.CREATE_PLAYER('player.png',200,200,20,20);
+            `
+            ],
+
+            [
+                  'PLAYER',//namespace
+                  'PLAYER_PED_ID',//nome do nativo
+                  'Serve para obter o player principal',//descricao do nativo
+                  ' ',//parametros
+                  `
+            Nenhum
+            `,
+                  `
+            const
+  player
+  = PLAYER.
+  PLAYER_PED_ID();
+            `
+            ],
+
+            [
+                  'PLAYER',//namespace
+                  'MOVE_PLAYER_RIGHT',//nome do nativo
+                  'Serve para mover o player principal para a direita',//descricao do nativo
+                  'pixels',//parametros
+                  `
+            pixels = Quants pixeis sera movimentado
+            `,
+                  `
+            PLAYER.
+  MOVE_PLAYER_RIGHT(5);
+            `
+            ],
+
+            [
+                  'PLAYER',//namespace
+                  'MOVE_PLAYER_LEFT',//nome do nativo
+                  'Serve para mover o player principal para a esquerda',//descricao do nativo
+                  'pixels',//parametros
+                  `
+            pixels = Quants pixeis sera movimentado
+            `,
+                  `
+            MOVE_PLAYER_LEFT(pixels)
+            `
+            ],
+
+            [
+                  'PLAYER',//namespace
+                  'MOVE_PLAYER_UP',//nome do nativo
+                  'Serve para mover o player principal para cima',//descricao do nativo
+                  'pixels',//parametros
+                  `
+            pixels = Quants pixeis sera movimentado
+            `,
+                  `
+            PLAYER.
+  MOVE_PLAYER_UP(5);
+            `
+            ],
+
+            [
+                  'PLAYER',//namespace
+                  'MOVE_PLAYER_DOWN',//nome do nativo
+                  'Serve para mover o player principal para baixo',//descricao do nativo
+                  'pixels',//parametros
+                  `
+            pixels = Quants pixeis sera movimentado
+            `,
+                  `
+            PLAYER.MOVE_PLAYER_DOWN(5);
+            `
+            ],
+
+            [
+                  'GRAPHICS',//namespace
+                  'DRAW_TEXT_ON_SCREEN',//nome do nativo
+                  'Serve para escrever um texto permanente na tela<br>Nao precisa ser usado em loop<br>Pode ser apagado com o DELETE_ENTITY',//descricao do nativo
+                  'text, x, y, color, tamFonte, font',//parametros
+                  `
+            text = Texto<br>
+  x = Posição X<br>
+  y = Posição Y<br>
+  color = Cor do texto (padrao = 'black')<br>
+  tamFonte = Tamanho da fonte (padrao = 25)<br>
+  font = Tpo da fonte (padrao = 'monospace')<br>
+            `,
+                  `
+            const texto = GRAPHICS.DRAW_TEXT_ON_SCREEN('hello',100,100);
+            `
+            ],
+
+            [
+                  'GRAPHICS',//namespace
+                  'DRAW_TEXT_ON_MAP',//nome do nativo
+                  'Serve para escrever um texto permanente no mapa<br>Nao precisa ser usado em loop<br>Pode ser apagado com o DELETE_ENTITY',//descricao do nativo
+                  'text, x, y, color, tamFonte, font',//parametros
+                  `
+            text = Texto<br>
+  x = Posição X<br>
+  y = Posição Y<br>
+  color = Cor do texto (padrao = 'black')<br>
+  tamFonte = Tamanho da fonte (padrao = 25)<br>
+  font = Tpo da fonte (padrao = 'monospace')<br>
+            `,
+                  `
+            const
+  texto
+  = GRAPHICS.
+  DRAW_TEXT_ON_MAP('hello',100,100);
+            `
+            ],
+
+            [
+                  'GRAPHICS',//namespace
+                  'DRAW_SPRITE',//nome do nativo
+                  'Serve para exibir uma textura permanente no mapa<br>Nao precisa ser usado em loop<br>Pode ser apagado com o DELETE_ENTITY',//descricao do nativo
+                  'src, x, y, w, h',//parametros
+                  `
+            src = Caminho da imagem<br>
+  x = Posição X<br>
+  y = Posição Y<br>
+  w = Largura<br>
+  h = Altura<br>
+            `,
+                  `
+            const img = GRAPHICS.DRAW_SPRITE('img.png',100,100,50,50);
+            `
+            ],
+
+            [
+                  'GRAPHICS',//namespace
+                  'DRAW_RECT_ON_SCREEN',//nome do nativo
+                  'Serve para exibir uma quadrado permanente na tela<br>Nao precisa ser usado em loop<br>Pode ser apagado com o DELETE_ENTITY',//descricao do nativo
+                  'x , y , w , h, bg, fontColor, alpha',//parametros
+                  `
+            x = Posição X<br>
+  y = Posição Y<br>
+  w = Largura<br>
+  h = Altura<br>
+  bg = Cor de fundo (padrao = 'black')<br>
+  fontColor = Cor da fonte (padrao = 'white')<br>
+  alpha = Transparencia (padrao = '0.9')<br>
+            `,
+                  `
+            const rect = GRAPHICS.DRAW_RECT_ON_SCREEN(100,100,50,50);
+            `
+            ],
+            [
+                  'GRAPHICS',//namespace
+                  'DRAW_RECT_ON_MAP',//nome do nativo
+                  'Serve para exibir uma quadrado permanente no mapa',//descricao do nativo
+                  'x , y , w , h, bg, fontColor, alpha',//parametros
+                  `
+            x = Posição X<br>
+  y = Posição Y<br>
+  w = Largura<br>
+  h = Altura<br>
+  bg = Cor de fundo (padrao = 'black')<br>
+  fontColor = Cor da fonte (padrao = 'white')<br>
+  alpha = Transparencia (padrao = '0.9')<br>
+            `,
+                  `
+            const rect = GRAPHICS.DRAW_RECT_ON_MAP(100,100,50,50);
+            `
+            ],
+
+            [
+                  'DEV',//namespace
+                  'DRAW_GRID_LINES',//nome do nativo
+                  'Serve para exibir linhas guias na tela<br>Nao precisa ser usado em loop',//descricao do nativo
+                  'espacamento, color',//parametros
+                  `
+            espacamento = Espacamento entre linhas em pixeis<br>
+            color = Cor da linha (padrao = 'black')
+            `,
+                  `
+            DEV.DRAW_GRID_LINES(10);
+            `
+            ],
+
+            [
+                  'DEV',//namespace
+                  'ADD_ALL_ENTITY_INFO_WHEN_MOUSE_IS_OVER',//nome do nativo
+                  'Serve para exibir info dos elementos ao passar o mouse',//descricao do nativo
+                  ' ',//parametros
+                  `
+            Nenhum
+            `,
+                  `
+            DEV.ADD_ALL_ENTITY_INFO_WHEN_MOUSE_IS_OVER();
+            `
+            ],
+
+            [
+                  'DEV',//namespace
+                  'DRAW_ENTITY_INFO_PANEL',//nome do nativo
+                  'Serve para exibir um painel movimentavel para ajustes de um elementos',//descricao do nativo
+                  'entity',//parametros
+                  `
+            entity = Elemento a ser utilizado
+            `,
+                  `
+            DEV.DRAW_ENTITY_INFO_PANEL(PLAYER.PLAYER_PED_ID());
+            `
+            ],
+
+            [
+                  'DEV',//namespace
+                  'CALL_SCENE_CREATOR',//nome do nativo
+                  'Serve para exibir um painel movimentavel para criação de elementos',//descricao do nativo
+                  ' ',//parametros
+                  `
+            Nenhum
+            `,
+                  `
+            DEV.CALL_SCENE_CREATOR();
+            `
+            ],
+
+            [
+                  'ALERT',//namespace
+                  'ADD_FOOT_INFO',//nome do nativo
+                  'Serve para exibir uma mensagem no rodapé da tela',//descricao do nativo
+                  'texto',//parametros
+                  `
+            texto = Mensagem a ser exibida
+            `,
+                  `
+            ALERT.ADD_FOOT_INFO("ola bem vindo!");
+            `
+            ],
+
+            [
+                  'ALERT',//namespace
+                  'SHOW_MESSAGE',//nome do nativo
+                  'Serve para exibir uma mensagem normal da tela, usado para falas de personagens',//descricao do nativo
+                  'texto, time',//parametros
+                  `
+            texto = Mensagem a ser exibida<br>
+                time = Tempo ate desaparescer (em milisegundos)
+            `,
+                  `
+            ALERT.SHOW_MESSAGE("ola bem vindo!",3000);
+            `
+            ],
+
+            [
+                  'ALERT',//namespace
+                  'SHOW_MESSAGE_WITH_IMG',//nome do nativo
+                  'Serve para exibir uma mensagem normal da tela com uma imagem, usado para falas de personagens',//descricao do nativo
+                  'image,texto, time',//parametros
+                  `
+            image = Imagem a ser exibida<br>
+                texto = Mensagem a ser exibida<br>
+                time = Tempo ate desaparescer (em milisegundos)
+            `,
+                  `
+            ALERT.SHOW_MESSAGE_WITH_IMG("inimigo.png", "Vou te matar!",3000);
+            `
+            ],
+
+            [
+                  'ALERT',//namespace
+                  'SHOW_INFO',//nome do nativo
+                  'Serve para exibir uma mensagem no canto inferior da tela',//descricao do nativo
+                  'titulo, texto, corFundo, corFonte, tempo',//parametros
+                  `
+            titulo = Titulo da mensagem<br>
+  texto = Mensagem a ser exibida<br>
+  corFundo = Cor de fundo<br>
+  corFonte = Cor da fonte<br>
+  tempo = Tempo ate desaparescer (em milisegundos)
+            `,
+                  `
+            ALERT.SHOW_INFO("Heyyyy", "Vou te matar!","black","white",3000);
+            `
+            ],
+
+            [
+                  'SCREEN',//namespace
+                  'GET_X_SCREEN_SIZE',//nome do nativo
+                  'Serve para obter a largura da tela.',//descricao do nativo
+                  ' ',//parametros
+                  `
+            Nenhum
+            `,
+                  `
+            console.log(SCREEN.GET_X_SCREEN_SIZE());
+            `
+            ],
+            [
+                  'SCREEN',//namespace
+                  'GET_Y_SCREEN_SIZE',//nome do nativo
+                  'Serve para obter a altura da tela.',//descricao do nativo
+                  ' ',//parametros
+                  `
+            Nenhum
+            `,
+                  `
+            console.log(SCREEN.GET_Y_SCREEN_SIZE());
+            `
+            ],
+
+            [
+                  'SCREEN',//namespace
+                  'GET_CENTER_X_SCREEN',//nome do nativo
+                  'Serve para obter o centro horizontal da tela',//descricao do nativo
+                  ' ',//parametros
+                  `
+            Nenhum
+            `,
+                  `
+            console.log(SCREEN.GET_CENTER_X_SCREEN());
+            `
+            ],
+            [
+                  'SCREEN',//namespace
+                  'GET_CENTER_Y_SCREEN',//nome do nativo
+                  'Serve para obter o centro vertical da tela',//descricao do nativo
+                  ' ',//parametros
+                  `
+            Nenhum
+            `,
+                  `
+            console.log(SCREEN.GET_CENTER_Y_SCREEN());
+            `
+            ],
+
+            [
+                  'CONTROLS',//namespace
+                  'ADD_PLAYER_AWSD_MOVIMENT',//nome do nativo
+                  'Adiciona movimentação ao player usando as teclas A,W,S,D',//descricao do nativo
+                  'speed',//parametros
+                  `
+            speed = Velocidade de movimento
+            `,
+                  `
+            CONTROLS.ADD_PLAYER_AWSD_MOVIMENT(4);
+            `
+            ],
+
+            [
+                  'CONTROLS',//namespace
+                  'SHOW_MOBILE_CONTROLS',//nome do nativo
+                  'Adiciona e exibe movimentação ao player usando o touchscreen',//descricao do nativo
+                  'speed',//parametros
+                  `
+            speed = Velocidade de movimento
+            `,
+                  `
+            CONTROLS.SHOW_MOBILE_CONTROLS(4);
+            `
+            ],
+            [
+                  'CONTROLS',
+                  'ADD_MOUSE_MOVE_TO_ENTITY',
+                  'Adiciona movimentação ao elemento usando o mouse',
+                  'entity',
+                  'entity = Elemento ',
+                  'CONTROLS.ADD_MOUSE_MOVE_TO_ENTITY(PLAYER.PLAYER_PED_ID());',
+            ]
+            ,
+            [
+                  'COMPONENT',
+                  'CREATE_PROGRESS_BAR',
+                  'Adiciona uma barra de progresso a tela ou ao mapa',
+                  'x, y, w, h, color, attach',//parametros
+                  `
+            x = Posição X<br>
+  y = Posição Y<br>
+  w = Largura<br>
+  h = Altura<br>
+  color = Cor de fundo<br>
+  attach = Onde criar, tela ou no mapa
+            `,
+                  `
+            //Criar na tela<br>var barra = COMPONENT.CREATE_PROGRESS_BAR(100,100,100,30,'red',tela);<br>//Criar no mapa<br>var barra = COMPONENT.CREATE_PROGRESS_BAR(100,100,100,30,'red');
+            `
+            ],
+
+            [
+                  'COMPONENT',//namespace
+                  'SET_PROGRESS_BAR_VALUE',//nome do nativo
+                  'Define o valor de uma barra de progresso',//descricao do nativo
+                  'pb, value',//parametros
+                  `
+            pb = Barra<br>
+  value = Valor (0 a 100)
+            `,
+                  `
+            var barra = COMPONENT.CREATE_PROGRESS_BAR(100,100,100,30,'red',tela);<br>
+            COMPONENT.SET_PROGRESS_BAR_VALUE(barra,50);
+            `
+            ],
+
+            [
+                  'COMPONENT',//namespace
+                  'SET_PROGRESS_BAR_VALUE_WITH_COLOR',//nome do nativo
+                  'Define o valor de uma barra de progresso com cores relativo ao valor<br>Cheia = Verde<br>Media = Amarelo<br>Quase vazia = Laranja<br>Vazia = Vermelho<br>',//descricao do nativo
+                  'pb, value',//parametros
+                  `
+            pb = Barra<br>
+value = Valor (0 a 100)
+            `,
+                  `
+            var barra = COMPONENT.CREATE_PROGRESS_BAR(100,100,100,30,'red',tela);<br>COMPONENT.SET_PROGRESS_BAR_VALUE_WITH_COLOR(barra,50);
+            `
+            ],
+
+            [
+                  'COMPONENT',//namespace
+                  'GET_PROGRESS_BAR_VALUE',//nome do nativo
+                  'Retorna o valor de uma barra de progresso',//descricao do nativo
+                  'bar',//parametros
+                  `
+            bar = Barra
+            `,
+                  `
+            var barra = COMPONENT.CREATE_PROGRESS_BAR(100,100,100,30,'red',tela);<br>
+  
+  COMPONENT.SET_PROGRESS_BAR_VALUE(barra,50);//define 50<br>
+  
+  console.log(COMPONENT.GET_PROGRESS_BAR_VALUE(barra));
+            `
+            ],
+
+            [
+                  'PICKUP',//namespace
+                  'CREATE_PICKUP_ITEM',//nome do nativo
+                  'Cria um item coletavel no mapa com animação',//descricao do nativo
+                  'sprite, x, y, w, h',//parametros
+                  `
+            sprite = Imagem<br>
+  x = Posição X<br>
+  y = Posição Y<br>
+  w = Largura<br>
+  h = Altura<br>
+            `,
+                  `
+            var vida = PICKUP.CREATE_PICKUP_ITEM('vida.png',100,100,30,30);
+            `
+            ],
+
+            [
+                  'PICKUP',//namespace
+                  'IS_PICKUP_COLLECTED',//nome do nativo
+                  'Verifica se um item coletavel foi coletado',//descricao do nativo
+                  'pickup',//parametros
+                  `
+            pickup = Coletavel
+            `,
+                  `
+            var vida = PICKUP.CREATE_PICKUP_ITEM('vida.png',100,100,30,30);<br><br>
+  //loop <br>
+
+  if (PICKUP.IS_PICKUP_COLLECTED(vida)){ <br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//coletado <br>
+  }
+            `
+            ],
+
+            [
+                  'FUNCTIONS',//namespace
+                  'GET_RANDON_INT',//nome do nativo
+                  'Gera um numero inteiro aleatório entre 2 numeros',//descricao do nativo
+                  'min, max',//parametros
+                  `
+            min = Valor minimo<br>
+  max = Valor maximo<br>
+            `,
+                  `
+            //entre 100 e 200 <br>
+  console.log(FUNCTIONS.GET_RANDON_INT(100,200));
+            `
+            ],
+
+            [
+                  'FUNCTIONS',//namespace
+                  'GET_RANDON_FLOAT',//nome do nativo
+                  'Gera um numero float aleatório entre 2 numeros',//descricao do nativo
+                  'min, max',//parametros
+                  `
+            min = Valor minimo<br>
+  max = Valor maximo<br>
+            `,
+                  `
+            //entre 100.0 e 200.0 <br>
+  console.log(FUNCTIONS.GET_RANDON_FLOAT(100.0,200.0));
+            `
+            ],
+
+            [
+                  'FUNCTIONS',//namespace
+                  'RELOAD_GAME',//nome do nativo
+                  'Recarrega o jogo',//descricao do nativo
+                  ' ',//parametros
+                  `
+            Nenhum
+            `,
+                  `
+            FUNCTIONS.RELOAD_GAME();
+            `
+            ],
+
+            [
+                  'STYLE',//namespace
+                  'SET_BORDER_RADIUS',//nome do nativo
+                  'Define o arrendondamento de borda de um elemento',//descricao do nativo
+                  'entity, value',//parametros
+                  `
+            entity = Elemento<br>
+  value = Valor<br>
+            `,
+                  `
+            STYLE.SET_BORDER_RADIUS(PLAYER.PLAYER_PED_ID(),10);
+            `
+            ],
+
+            [
+                  'EFFECTS',//namespace
+                  'SEPIA',//nome do nativo
+                  'Aplica o efeito sepia a um elemento',//descricao do nativo
+                  'entity',//parametros
+                  `
+            entity = Elemento a ser utilizado
+            `,
+                  `
+            EFFECTS.SEPIA(PLAYER.PLAYER_PED_ID());
+            `
+            ],
+
+            [
+                  'EFFECTS',//namespace
+                  'BLACK_AND_WHITE',//nome do nativo
+                  'Aplica o efeito preto e branco a um elemento',//descricao do nativo
+                  'entity',//parametros
+                  `
+            entity = Elemento a ser utilizado
+            `,
+                  `
+            EFFECTS.BLACK_AND_WHITE(PLAYER.PLAYER_PED_ID());
+            `
+            ],
+
+            [
+                  'EFFECTS',//namespace
+                  'BLUR_ITEM',//nome do nativo
+                  'Aplica o efeito borrado a um elemento',//descricao do nativo
+                  'entity',//parametros
+                  `
+            entity = Elemento a ser utilizado<br>
+            `,
+                  `
+            EFFECTS.BLUR_ITEM(PLAYER.PLAYER_PED_ID());
+            `
+            ],
+
+            [
+                  'EFFECTS',//namespace
+                  'REMOVE_ALL',//nome do nativo
+                  'Remove todos efeitos de um elemento',//descricao do nativo
+                  'entity',//parametros
+                  `
+            entity = Elemento a ser utilizado
+            `,
+                  `
+            EFFECTS.REMOVE_ALL(PLAYER.PLAYER_PED_ID());
+            `
+            ],
+
+            [
+                  'AUDIO',//namespace
+                  'CREATE_AUDIO',//nome do nativo
+                  'Cria um audio',//descricao do nativo
+                  'src',//parametros
+                  `
+            src = Caminho do audio
+            `,
+                  `
+            AUDIO.CREATE_AUDIO(musica_ambiente.mp3);
+            `
+            ],
+
+            [
+                  'AUDIO',//namespace
+                  'PLAY_AUDIO',//nome do nativo
+                  'Executa um audio 1x',//descricao do nativo
+                  'src',//parametros
+                  `
+            src = Elemento do audio
+            `,
+                  `
+            var musica = AUDIO.CREATE_AUDIO(musica_ambiente.mp3);<br> 
+  AUDIO.PLAY_AUDIO(musica);
+            `
+            ],
+
+            [
+                  'AUDIO',//namespace
+                  'PLAY_AUDIO_IN_LOOP',//nome do nativo
+                  'Executa um audio em loop',//descricao do nativo
+                  'src',//parametros
+                  `
+            src = Elemento do audio
+            `,
+                  `
+            var musica = AUDIO.CREATE_AUDIO(musica_ambiente.mp3); <br>
+  AUDIO.PLAY_AUDIO_IN_LOOP(musica);
+            `
+            ],
+
+            [
+                  'AUDIO',//namespace
+                  'STOP_AUDIO',//nome do nativo
+                  'Para um audio',//descricao do nativo
+                  'src',//parametros
+                  `
+            src = Elemento do audio
+            `,
+                  `
+            var musica = AUDIO.CREATE_AUDIO(musica_ambiente.mp3); <br>
+  AUDIO.PLAY_AUDIO_IN_LOOP(musica); <br>
+  AUDIO.STOP_AUDIO(musica);
+            `
+            ],
+
+            [
+                  'AUDIO',//namespace
+                  'SET_AUDIO_VOLUME',//nome do nativo
+                  'Define o volume de um audio',//descricao do nativo
+                  'src,vol',//parametros
+                  `
+            src = Elemento do audio<br>
+  vol = Volume do audio (0 a 100)
+            `,
+                  `
+            var musica = AUDIO.CREATE_AUDIO(musica_ambiente.mp3); <br>
+  AUDIO.PLAY_AUDIO_IN_LOOP(musica); <br>
+  AUDIO.SET_AUDIO_VOLUME(musica, 70);
+            `
+            ],
+
+            [
+                  'AUDIO',//namespace
+                  'DELETE_AUDIO',//nome do nativo
+                  'Deleta um audio',//descricao do nativo
+                  'src',//parametros
+                  `
+            src = Elemento do audio
+            `,
+                  `
+            var musica = AUDIO.CREATE_AUDIO(musica_ambiente.mp3); <br>
+
+  AUDIO.DELETE_AUDIO(musica);
+            `
+            ],
+
+
+
+            [
+                  'ENTITY',//namespace
+                  'SHOOT_ENTITY',//nome do nativo
+                  'Cria um projetil que vai em direção de um objeto',//descricao do nativo
+                  'textura, w, h, entity, velocidade',//parametros
+                  `
+            textura: <br>
+            w: <br> 
+            h: <br> 
+            entity: <br> 
+            velocidade: 
+            `,
+                  `
+            ENTITY.SHOOT_ENTITY('BALA.PNG',10,10,inimigo,5)
+            `
+            ],
+
+
+            [
+                  'ENTITY',//namespace
+                  'MAKE_ENTITY_FOLLOW_PLAYER',//nome do nativo
+                  'Faz com que um elemento siga ou vá na direção do jogador',//descricao do nativo
+                  'entity, speed, infinite',//parametros
+                  `
+            entity = Elemento a ser utilizado<br>
+            speed = velocidade<br>
+            infinite = bool para seguir infinitamente ou não
+            `,
+                  `
+                  ENTITY.MAKE_ENTITY_FOLLOW_PLAYER(document.getElementById( "inimigo" ),5,true)
+            `
+            ],
+
+            [
+                  'ENTITY',//namespace
+                  'MAKE_ENTITY_FOLLOW_ENTITYMAKE_ENTITY_FOLLOW_ENTITY',//nome do nativo
+                  'Faz com que um elemento siga ou vá na direção de outro elemento',//descricao do nativo
+                  'entity1, entity2, speed, infinite',//parametros
+                  `
+                  entity1 = Elemento seguidor<br>
+                  entity2 = Elemento seguido<br>
+            speed = velocidade<br>
+            infinite = bool para seguir infinitamente ou não
+            `,
+                  `
+                  ENTITY.MAKE_ENTITY_FOLLOW_ENTITY(document.getElementById( "inimigo"),PLAYER.PLAYER_PED_ID(),5,true)
+            `
+            ],
+
+            [
+                  'ENTITY',//namespace
+                  'DESTROY_ENTITY_WHEN_COLLIDE_TO_ANY_ENTITY',//nome do nativo
+                  'Faz com que um elemento se auto-destrua ao colidir com qualquer bloco com colisão (não necessita ser chamada em loop)',//descricao do nativo
+                  'entity',//parametros
+                  `
+            entity = Elemento a ser utilizado<br>
+            `,
+                  `
+                  ENTITY.DESTROY_ENTITY_WHEN_COLLIDE_TO_ANY_ENTITY(PLAYER.PLAYER_PED_ID());
+            `
+            ],
+
+            [
+                  'MAP',//namespace
+                  'GET_MAP_IMG',//nome do nativo
+                  'Retorna o caminho da imagem do mapa atual',//descricao do nativo
+                  ' ',//parametros
+                  `
+            Nenhum
+            `,
+                  `
+            console.log(MAP.GET_MAP_IMG())
+            `
+            ],
+
+            [
+                  'MAP',//namespace
+                  'SET_MAP_IMG',//nome do nativo
+                  'Define a imagem do mapa atual',//descricao do nativo
+                  'src',//parametros
+                  `
+            src = Caminho da imagem
+            `,
+                  `
+            MAP.SET_MAP_IMG('floresta.png')
+            `
+            ],
+
+            [
+                  'MAP',//namespace
+                  'DRAW_MINIMAP',//nome do nativo
+                  'Exibe/oculta a miniatura do mapa atual atraves de uma tecla qualquer',//descricao do nativo
+                  'OpenKey',//parametros
+                  `
+                  OpenKey = Tecla a ser utilizado para exibir<br>
+            `,
+                  `
+                  MAP.DRAW_MINIMAP('m');
+            `
+            ],
+
+            [
+                  'CONTROLS',//namespace
+                  'ADD_KEYBOARD_EVENT',//nome do nativo
+                  'Executa uma função atraves de uma tecla qualquer',//descricao do nativo
+                  'tecla, voids',//parametros
+                  `
+                  tecla = Tecla que ativa<br>
+                  voids = Função<br>
+            `,
+                  `
+                  CONTROLS.ADD_KEYBOARD_EVENT('k',()=>{<br>
+                  &nbsp;&nbsp;&nbsp;&nbsp;console.log('blabla');<br>
+                  })
+            `
+            ],
+
+            [
+                  'POOLS',//namespace
+                  'GET_ALL_ENTITYS_WITH_COLLISION',//nome do nativo
+                  'Retorna um array com todos elementos do mapa que possue colisão',//descricao do nativo
+                  ' ',//parametros
+                  `Nenhum`,//explicacao
+                  `
+                  var objs = POOLS.GET_ALL_ENTITYS_WITH_COLLISION();
+                  `//exemplo
+            ],
+
+            [
+                  'ENTITY',//namespace
+                  'SET_AS_ENEMY',//nome do nativo
+                  'Define um elemento como inimigo, podendo perseguir ou não o jogador',//descricao do nativo
+                  'entity, followPlayer',//parametros
+                  `
+            entity = Elemento a ser utilizado<br>
+            followPlayer = Se deve seguir ou não o player
+            `,
+                  `
+                  ENTITY.SET_AS_ENEMY(inimigo,true)
+            `
+            ],
+
+            [
+                  'ENTITY',//namespace
+                  'SET_AS_FRIEND',//nome do nativo
+                  'Define um elemento como amigo',//descricao do nativo
+                  'entity',//parametros
+                  `
+            entity = Elemento a ser utilizado<br>
+            `,
+                  `
+                  ENTITY.SET_AS_FRIEND(inimigo,true)
+            `
+            ],
+
+            [
+                  'POOLS',//namespace
+                  'GET_ALL_ENEMYS',//nome do nativo
+                  'Retorna um array com todos elementos do mapa que são inimigos',//descricao do nativo
+                  ' ',//parametros
+                  `
+                  Nenhum
+            `,
+                  `
+            var objs = POOLS.GET_ALL_ENEMYS();
+            `
+            ],
+
+            [
+                  'POOLS',//namespace
+                  'GET_ALL_FRIENDS',//nome do nativo
+                  'Retorna um array com todos elementos do mapa que são amigos',//descricao do nativo
+                  ' ',//parametros
+                  `
+                  Nenhum
+            `,
+                  `
+                  var objs = POOLS.GET_ALL_FRIENDS();
+            `
+            ],
+
+            [
+                  'ENTITY',//namespace
+                  'SET_ENTITY_NO_LONGER_NEEDED',//nome do nativo
+                  'Deleta um elemento permanentemente ao sair do campo de visão',//descricao do nativo
+                  'entity',//parametros
+                  `
+            entity = Elemento a ser utilizado<br>
+            `,
+                  `
+                  ENTITY.SET_ENTITY_NO_LONGER_NEEDED(inimigo)
+                  `
+            ],
+
+            [
+                  'ENTITY',//namespace
+                  'GET_DISTANCE_BETWEEN_ENTITYS',//nome do nativo
+                  'Calcula a distancia entre 2 elementos',//descricao do nativo
+                  'entity1, entity2',//parametros
+                  `
+                  entity1 = Elemento 1<br>
+                  entity2 = Elemento 2<br>`,//explicacao
+                  `
+                  var dist = ENTITY.GET_DISTANCE_BETWEEN_ENTITYS(PLAYER.PLAYER_PED_ID(),document.getElementById('inimigo'))
+                  `//exemplo
+            ],
+
+            [
+                  'MAP',//namespace
+                  'GET_DISTANCE_BETWEEN_COORDS',//nome do nativo
+                  'Calcula a distancia entre 2 pontos',//descricao do nativo
+                  'x1, y1, x2, y2',//parametros
+                  `
+                  x1 = Posicao inicial X<br>
+                  y1 = Posicao inicial Y<br>
+                  x2 = Posicao final X<br>
+                  y2 = Posicao final Y<br>
+                  `,//explicacao
+                  `
+                  var dist = ENTITY.GET_DISTANCE_BETWEEN_COORDS(100,100,200,200)
+                  `//exemplo
+            ],
+
+            [
+                  'AUDIO',//namespace
+                  'ATTACH_AUDIO_TO_ENTITY',//nome do nativo
+                  'Linka um audio a um elemento(quanto mais perto do player, mais alto), dando a sensação que o audio esta tocando no exato local do mapa',//descricao do nativo
+                  'src, entity',//parametros
+                  `
+                  src = Audio<br>
+                  entity = Elemento`,//explicacao
+                  `
+                  AUDIO.ATTACH_AUDIO_TO_ENTITY(audio,PLAYER.PLAYER_PED_ID())
+                  `//exemplo
+            ],
+
+            [
+                  'GRAPHICS',//namespace
+                  'DRAW_LIGHT',//nome do nativo
+                  'Cria uma luz artificial em um ponto do mapa',//descricao do nativo
+                  'x, y, size, color',//parametros
+                  `
+            x = Posição X<br>
+            y = Posição Y<br>
+            size = Tamanho<br>
+            color = Cor<br>
+            `,
+                  `
+                  var luz = GRAPHICS.DRAW_LIGHT(100,100,20,'red')
+            `
+            ],
+
+            [
+                  'GRAPHICS',//namespace
+                  'SET_LIGHT_SIZE',//nome do nativo
+                  'Muda o tamanho de uma luz artificial',//descricao do nativo
+                  'light, size',//parametros
+                  `
+            light = Elemento a ser utilizado<br>
+            size = Tamanho<br>
+            `,
+                  `
+                  var luz = GRAPHICS.DRAW_LIGHT(100,100,20,'red')<br>
+                  GRAPHICS.SET_LIGHT_SIZE(luz,30)
+            `
+            ],
+
+            [
+                  'GRAPHICS',//namespace
+                  'SET_LIGHT_COLOR',//nome do nativo
+                  'Muda a cor de uma luz artificial',//descricao do nativo
+                  'light, color',//parametros
+                  `
+                  light = Elemento a ser utilizado<br>
+                  color = Cor<br>
+            `,
+                  `
+                  var luz = GRAPHICS.DRAW_LIGHT(100,100,20,'red')<br>
+                  GRAPHICS.SET_LIGHT_COLOR(luz,'green')
+            `
+            ],
+
+            [
+                  'COMPONENT',//namespace
+                  'SET_PROGRESS_BAR_COLOR',//nome do nativo
+                  'Muda a cor de uma progressbar',//descricao do nativo
+                  'bar, color',//parametros
+                  `
+            bar = Elemento a ser utilizado<br>
+            color = Cor
+            `,
+                  `
+                  COMPONENT.SET_PROGRESS_BAR_COLOR(document.getElementById('barra'),'red')
+            `
+            ],
+
+            [
+                  'COMPONENT',//namespace
+                  'SET_PROGRESS_BAR_MAX_VALUE',//nome do nativo
+                  'Muda o valor maximo de uma progressbar',//descricao do nativo
+                  'pb, value',//parametros
+                  `
+            pb = Elemento a ser utilizado<br>
+            value = Valor
+            `,
+                  `
+                  COMPONENT.SET_PROGRESS_BAR_MAX_VALUE(document.getElementById('barra'),100)
+            `
+            ],
+
+            [
+                  'COMPONENT',//namespace
+                  'SET_PROGRESS_BAR_MIN_VALUE',//nome do nativo
+                  'Muda o valor minimo de uma progressbar',//descricao do nativo
+                  'pb, value',//parametros
+                  `
+                  pb = Elemento a ser utilizado<br>
+            value = Valor
+            `,
+                  `
+                  COMPONENT.SET_PROGRESS_BAR_MIN_VALUE(document.getElementById('barra'),1)
+            
+            `
+            ],
+
+            [
+                  'CONTROLS',//namespace
+                  'HIDE_MOUSE',//nome do nativo
+                  'Oculta o cursor do mouse',//descricao do nativo
+                  ' ',//parametros
+                  `
+            Nenhum
+            `,
+                  `
+                  CONTROLS.HIDE_MOUSE()
+            `
+            ],
+
+            [
+                  'CONTROLS',//namespace
+                  'SHOW_MOUSE',//nome do nativo
+                  'Exibe o cursor do mouse',//descricao do nativo
+                  ' ',//parametros
+                  `
+            Nenhum
+            `,
+                  `
+                  CONTROLS.SHOW_MOUSE()
+            `
+            ],
+
+            [
+                  'MOBILE',//namespace
+                  'ADD_MOBILE_BUTTON',//nome do nativo
+                  'Adiciona botoes extras para smartphones',//descricao do nativo
+                  'txt, voids',//parametros
+                  `
+                  txt = Texto do botão<br>
+                  voids = Função ao clicar<br>
+            `,
+                  `
+                  var alerta = MOBILE.ADD_MOBILE_BUTTON('Exibir Alerta',()=>{<br>
+                  alert('aaaaaa');<br>
+                  })
+            `
+            ],
+
+            [
+                  'MOBILE',//namespace
+                  'SET_MOBILE_BUTTON_TEXT',//nome do nativo
+                  'Muda o texto de botoes extras para smartphones',//descricao do nativo
+                  'bt, txt',//parametros
+                  `
+            bt = Elemento a ser utilizado<br>
+            txt = Texto
+            `,
+                  `
+                  var alerta = MOBILE.ADD_MOBILE_BUTTON('Exibir Alerta',()=>{<br>
+                  alert('aaaaaa');<br>
+                  })<br><br>
+                  MOBILE.SET_MOBILE_BUTTON_TEXT(alerta,'Novo texto')
+            `
+            ],
+
+            [
+                  'MOBILE',//namespace
+                  'SET_MOBILE_BUTTON_BG_COLOR',//nome do nativo
+                  'Muda a cor de fundo de botoes extras para smartphones',//descricao do nativo
+                  'bt, color',//parametros
+                  `
+                  bt = Elemento a ser utilizado<br>
+            color = Cor
+            `,
+                  `
+                  var alerta = MOBILE.ADD_MOBILE_BUTTON('Exibir Alerta',()=>{<br>
+                  alert('aaaaaa');<br>
+                  })<br><br>
+                  MOBILE.SET_MOBILE_BUTTON_BG_COLOR(alerta,'red')
+            `
+            ],
+
+            [
+                  'MOBILE',//namespace
+                  'SET_MOBILE_BUTTON_FONT_COLOR',//nome do nativo
+                  'Muda a cor da fonte de botoes extras para smartphones',//descricao do nativo
+                  'entity',//parametros
+                  `
+                  bt = Elemento a ser utilizado<br>
+            color = Cor
+            `,
+                  `
+                  var alerta = MOBILE.ADD_MOBILE_BUTTON('Exibir Alerta',()=>{<br>
+                  alert('aaaaaa');<br>
+                  })<br><br>
+                  MOBILE.SET_MOBILE_BUTTON_FONT_COLOR(alerta,'black')
+            `
+            ],
+
+            [
+                  'MOBILE',//namespace
+                  'DELETE_ALL_MOBILE_BUTTONS',//nome do nativo
+                  'Deleta todos botoes extras para smartphones',//descricao do nativo
+                  ' ',//parametros
+                  `
+            Nenhum
+            `,
+                  `
+                  MOBILE.DELETE_ALL_MOBILE_BUTTONS()
+            `
+            ],
+
+            [
+                  'POOLS',//namespace
+                  'GET_CLOSEST_FRIEND',//nome do nativo
+                  'Retorna o elemento amigo mais próximo do player',//descricao do nativo
+                  ' ',//parametros
+                  `
+                  Nenhum
+            `,
+                  `
+                  var objs = POOLS.GET_CLOSEST_FRIEND();
+            `
+            ],
+
+            [
+                  'POOLS',//namespace
+                  'GET_CLOSEST_ENEMY',//nome do nativo
+                  'Retorna o elemento inimigo mais próximo do player',//descricao do nativo
+                  ' ',//parametros
+                  `
+                  Nenhum
+            `,
+                  `
+                  var objs = POOLS.GET_CLOSEST_ENEMY();
+            `
+            ],
+
+            [
+                  'POOLS',//namespace
+                  'DELETE_ALL_ENTITYS',//nome do nativo
+                  'Deleta tudo do mapa',//descricao do nativo
+                  ' ',//parametros
+                  `
+                  Nenhum
+            `,
+                  `
+                  var objs = POOLS.DELETE_ALL_ENTITYS();
+            `
+            ],
+
+            [
+                  'POOLS',//namespace
+                  'GET_ALL_MOBILE_BUTTONS',//nome do nativo
+                  'Obtem um array com todos botoes mobile',//descricao do nativo
+                  ' ',//parametros
+                  `
+                  Nenhum
+            `,
+                  `
+                  var objs = POOLS.GET_ALL_MOBILE_BUTTONS();
+            `
+            ],
+
+            [
+                  'POOLS',//namespace
+                  'GET_ALL_STATUSBARS',//nome do nativo
+                  'Obtem um array com todos statusbars',//descricao do nativo
+                  ' ',//parametros
+                  `
+                  Nenhum
+            `,
+                  `
+                  var objs = POOLS.GET_ALL_STATUSBARS();
+            `
+            ],
+
+            [
+                  'POOLS',//namespace
+                  'GET_ALL_AUDIOS',//nome do nativo
+                  'Obtem um array com todos audios',//descricao do nativo
+                  ' ',//parametros
+                  `
+                  Nenhum
+            `,
+                  `
+                  var objs = POOLS.GET_ALL_AUDIOS();
+            `
+            ],
+
+            [
+                  'POOLS',//namespace
+                  'GET_ALL_PICKUPS',//nome do nativo
+                  'Obtem um array com todos coletaveis',//descricao do nativo
+                  ' ',//parametros
+                  `
+                  Nenhum
+            `,
+                  `
+                  var objs = POOLS.GET_ALL_PICKUPS();
+            `
+            ],
+
+            [
+                  'POOLS',//namespace
+                  'GET_ALL_PROGRESSBARS',//nome do nativo
+                  'Obtem um array com todos progressbars',//descricao do nativo
+                  ' ',//parametros
+                  `
+                  Nenhum
+            `,
+                  `
+                  var objs = POOLS.GET_ALL_PROGRESSBARS();
+            `
+            ],
+
+            [
+                  'POOLS',//namespace
+                  'GET_ALL_LIGHTS',//nome do nativo
+                  'Obtem um array com todas luzes',//descricao do nativo
+                  ' ',//parametros
+                  `
+                  Nenhum
+            `,
+                  `
+                  var objs = POOLS.GET_ALL_LIGHTS();
+            `
+            ],
+
+            [
+                  'POOLS',//namespace
+                  'GET_ALL_RECTS',//nome do nativo
+                  'Obtem um array com todos rects',//descricao do nativo
+                  ' ',//parametros
+                  `
+                  Nenhum
+            `,
+                  `
+                  var objs = POOLS.GET_ALL_RECTS();
+            `
+            ],
+
+            [
+                  'POOLS',//namespace
+                  'GET_ALL_TEXTS',//nome do nativo
+                  'Obtem um array com todos textos',//descricao do nativo
+                  ' ',//parametros
+                  `
+                  Nenhum
+            `,
+                  `
+                  var objs = POOLS.GET_ALL_TEXTS();
+            `
+            ],
+
+            [
+                  'POOLS',//namespace
+                  'GET_ALL_SPRITES',//nome do nativo
+                  'Obtem um array com todas texturas',//descricao do nativo
+                  ' ',//parametros
+                  `
+            Nenhum
+            `,
+                  `
+                  var objs = POOLS.GET_ALL_SPRITES();
+            `
+            ],
+
+            [
+                  'POOLS',//namespace
+                  'GET_ALL_ENTITYS',//nome do nativo
+                  'Obtem um array com todos elementos criados',//descricao do nativo
+                  ' ',//parametros
+                  `
+                  Nenhum
+            `,
+                  `
+                  var objs = POOLS.GET_ALL_ENTITYS();
+            `
+            ],
+
+            [
+                  'GRAPHICS',//namespace
+                  'FLIP_SPRITE_HORIZONTAL',//nome do nativo
+                  ' Inverte uma textura horizontalmente',//descricao do nativo
+                  'entity',//parametros
+                  `
+            entity = Elemento a ser utilizado<br>
+            `,
+                  `
+                  GRAPHICS.FLIP_SPRITE_HORIZONTAL(PLAYER.PLAYER_PED_ID())
+                  `
+            ],
+
+            [
+                  'GRAPHICS',//namespace
+                  'FLIP_SPRITE_VERTCAL',//nome do nativo
+                  ' Inverte uma textura verticalmente',//descricao do nativo
+                  'entity',//parametros
+                  `
+            entity = Elemento a ser utilizado<br>
+            `,
+                  `
+                  GRAPHICS.FLIP_SPRITE_VERTCAL(PLAYER.PLAYER_PED_ID())
+                  `
+            ],
+
+            [
+                  'GRAPHICS',//namespace
+                  'FLIP_PLAYER_WHEN_MOVE',//nome do nativo
+                  'Posiciona a textura do player de acordo com a direção de movimento',//descricao do nativo
+                  ' ',//parametros
+                  `
+            Nenhum
+            `,
+                  `
+                  GRAPHICS.FLIP_PLAYER_WHEN_MOVE()
+                  `
+            ],
+
+            [
+                  'GAME',//namespace
+                  'SET_GAME_NAME',//nome do nativo
+                  'Define o nome do jogo, utilizado em opções de saves',//descricao do nativo
+                  'name',//parametros
+                  `name = Nome`,//explicacao
+                  `GAME.SET_GAME_NAME('Meu Jogo");`//exemplo
+            ],
+
+            [
+                  'GAME',//namespace
+                  'GET_GAME_NAME',//nome do nativo
+                  'Obtem o nome do jogo, utilizado em opções de saves',//descricao do nativo
+                  ' ',//parametros
+                  `
+            Nenhum
+            `,
+                  `
+            console.log(GAME.GET_GAME_NAME())
+            `
+            ],
+
+            [
+                  'GAME',//namespace
+                  'DOES_GAME_NAME_AS_DEFINED',//nome do nativo
+                  'Verifica se o nome do jogo ja foi definido',//descricao do nativo
+                  ' ',//parametros
+                  `
+                  Nenhum
+            `,
+                  `
+            if (GAME.DOES_GAME_NAME_AS_DEFINED()){<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;//sim<br>
+      }<br>
+      else{<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;//nao<br>}
+            `
+            ],
+
+            [
+                  'INVENTORY',//namespace
+                  'SAVE_INVENTORY_ITEM_QUANT',//nome do nativo
+                  'Salva a quantidade de um item no sistema de inventário',//descricao do nativo
+                  'itemName, quant',//parametros
+                  `
+                  itemName = Nome do item<br>
+                  quant = Quantidade<br>
+            `,
+                  `
+                  INVENTORY.SAVE_INVENTORY_ITEM_QUANT('Espada Katana',1)
+            `
+            ],
+
+            [
+                  'INVENTORY',//namespace
+                  'ADD_INVENTORY_ITEM_QUANT',//nome do nativo
+                  'Adiciona uma quantidade a mais, de um item no sistema de inventário',//descricao do nativo
+                  'itemName, quant',//parametros
+                  `
+                  itemName = Nome do item<br>
+                  quant = Quantidade<br>
+            `,
+                  `
+                  INVENTORY.ADD_INVENTORY_ITEM_QUANT('Espada Katana',1)
+            `
+            ],
+
+            [
+                  'INVENTORY',//namespace
+                  'REMOVE_INVENTORY_ITEM_QUANT',//nome do nativo
+                  'Remove uma quantidade de um item no sistema de inventário',//descricao do nativo
+                  'itemName, quant',//parametros
+                  `
+                  itemName = Nome do item<br>
+                  quant = Quantidade<br>
+            `,
+                  `
+                  INVENTORY.REMOVE_INVENTORY_ITEM_QUANT('Espada Katana',1)
+            `
+
+            ],
+
+            [
+                  'INVENTORY',//namespace
+                  'PLAYER_HAVE_ITEM',//nome do nativo
+                  'Verifica se o player tem uma quantidade de um item no sistema de inventário',//descricao do nativo
+                  'itemName, quant',//parametros
+                  `
+                  itemName = Nome do item<br>
+                  quant = Quantidade<br>
+            `,
+                  `
+                  if(INVENTORY.PLAYER_HAVE_ITEM('Espada Katana',1)){<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;//tem<br>
+      }<br>
+      else{<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;//nao tem<br>}
+            `
+            ],
+
+            [
+                  'INVENTORY',//namespace
+                  'GET_INVENTORY_ITEM_QUANT',//nome do nativo
+                  'Retorna a quantidade de um item no sistema de inventário',//descricao do nativo
+                  'itemName',//parametros
+                  `
+                  itemName = Nome do item<br>
+            `,
+                  `
+            console.log(INVENTORY.GET_INVENTORY_ITEM_QUANT('Espada Katana'))
+            `
+            ],
+
+            [
+                  'INVENTORY',//namespace
+                  'SAVE_INVENTORY_ITEM_IMG',//nome do nativo
+                  'Salva uma imagem em um item no sistema de inventário',//descricao do nativo
+                  'entity,src',//parametros
+                  `
+                  itemName = Nome do item<br>
+                  src = Caminho da imagem
+            `,
+                  `
+                  INVENTORY.SAVE_INVENTORY_ITEM_IMG('Espada Katana','espada.png')
+            `
+            ],
+
+            [
+                  'INVENTORY',//namespace
+                  'GET_INVENTORY_ITEM_IMG',//nome do nativo
+                  'Retorna a imagem de um item no sistema de inventário',//descricao do nativo
+                  'itemName',//parametros
+                  `itemName = Nome do item<br>`,//explicacao
+                  `console.log(INVENTORY.GET_INVENTORY_ITEM_IMG('Espada Katana'))`//exemplo
+            ],
+
+            [
+                  'INVENTORY',//namespace
+                  'CLEAR_ALL_INVENTORY',//nome do nativo
+                  ' Zera todas quantidades de itens do sistema de inventário',//descricao do nativo
+                  ' ',//parametros
+                  `Nenhum`,//explicacao
+                  `INVENTORY.CLEAR_ALL_INVENTORY();`//exemplo
+            ],
+
+            [
+                  'ENTITY',//namespace
+                  'SET_ENTITY_VISIBLE',//nome do nativo
+                  'Define se um elemento fica visível ou não',//descricao do nativo
+                  'entity, bool',//parametros
+                  `
+                  entity = Elemento<br>
+                  bool = Visivel ou não<br>
+                  `,//explicacao
+                  `
+                  //visivel<br>
+                  ENTITY.SET_ENTITY_VISIBLE(PLAYER.PLAYER_PED_ID(),true)<br>
+                  <br>
+                  //invisivel<br>
+                  ENTITY.SET_ENTITY_VISIBLE(PLAYER.PLAYER_PED_ID(),false)<br>
+                  `//exemplo
+            ],
+
+            [
+                  'CAM',//namespace
+                  'SET_CAMERA_FOCUS_ON_COORD',//nome do nativo
+                  'Define a posição da camera a partir de uma coordenada',//descricao do nativo
+                  'x, y',//parametros
+                  `
+                  x = Posição X final<br>
+                  y = Posição Y final<br>
+            `,
+                  `
+            CAM.SET_CAMERA_FOCUS_ON_COORD(250,250)<br>
+            //use setTimeout para definir o tempo<br>
+            CAM.RESTORE_CAMERA_FOCUS_ON_PLAYER();//restaura a camera
+            `
+            ],
+
+            [
+                  'CAM',//namespace
+                  'RESTORE_CAMERA_FOCUS_ON_PLAYER',//nome do nativo
+                  'Re-define a posição da camera no player',//descricao do nativo
+                  ' ',//parametros
+                  `
+            Nenhum
+            `,
+                  `
+            CAM.RESTORE_CAMERA_FOCUS_ON_PLAYER();
+            `
+            ],
+
+            [
+                  'MOBILE',//namespace
+                  'GET_TOUCH_X_COORD',//nome do nativo
+                  'Retorna a posição X do touch da tela em smartphones',//descricao do nativo
+                  ' ',//parametros
+                  `
+                  Nenhum
+            `,
+                  `
+                  console.log(MOBILE.GET_TOUCH_X_COORD())
+            `
+            ],
+
+            [
+                  'MOBILE',//namespace
+                  'GET_TOUCH_Y_COORD',//nome do nativo
+                  'Retorna a posição Y do touch da tela em smartphones',//descricao do nativo
+                  ' ',//parametros
+                  `
+                  Nenhum
+            `,
+                  `
+            console.log(MOBILE.GET_TOUCH_Y_COORD())
+            `
+            ],
+
+            [
+                  'MOBILE',//namespace
+                  'ADD_VOID_TOUCHED_AT_AREA',//nome do nativo
+                  'Executa algo quando o touch da tela for em uma area específica',//descricao do nativo
+                  'x, y, radius, voids',//parametros
+                  `
+                  x = Posição X<br>
+                  y = Posição Y<br>
+                  radius = Raio de posição<br>
+                  voids = Funcao ao clicar<br>
+                  `,//explicacao
+                  `
+                  MOBILE.ADD_VOID_TOUCHED_AT_AREA(100,100,20,()=>{<br>
+                  alert('hello')<br>
+                  })<br>
+                  `//exemplo
+            ],
+
+            [
+                  'MOBILE',//namespace
+                  'ADD_VOID_TOUCHED_TO_ENTITY',//nome do nativo
+                  'Executa algo quando o touch da tela for em um elemento',//descricao do nativo
+                  'entity, voids',//parametros
+                  `
+                  entity = Elemento<br>
+                  voids = Funcao ao clicar<br>
+                  `,//explicacao
+                  `
+                  MOBILE.ADD_VOID_TOUCHED_AT_AREA(PLAYER.PLAYER_PED_ID(),()=>{<br>
+                  alert('hello')<br>
+                  })<br>
+                  `//exemplo
+            ],
+
+
+
+            [
+                  'GRAPHICS',//namespace
+                  'DRAW_HORIZON_LINE',//nome do nativo
+                  'Desenha linhas guias em uma coordenada horizontalmente',//descricao do nativo
+                  'y, tam, color',//parametros
+                  `
+                  y = Posição Y<br>
+                  tam = Largura<br>
+                  color = Cor da linha<br>`,//explicacao
+                  `
+                  GRAPHICS.DRAW_HORIZON_LINE(100,5,'red')
+                  `//exemplo
+            ],
+            [
+                  'GRAPHICS',//namespace
+                  'DRAW_VERT_LINE',//nome do nativo
+                  'Desenha linhas guias em uma coordenada verticalmente',//descricao do nativo
+                  'x, tam, color',//parametros
+                  `
+                  x = Posição X<br>
+                  tam = Largura<br>
+                  color = Cor da linha<br>`,//explicacao
+                  `
+                  GRAPHICS.DRAW_VERT_LINE(100,5,'red')
+                  `//exemplo
+            ],
+
+
+            [
+                  'ENTITY',//namespace
+                  'DRAW_LINE_ON_ENTITY',//nome do nativo
+                  'Desenha linhas guias em um elemento',//descricao do nativo
+                  'entity,tam,color',//parametros
+                  `entity = Elemento a ser usado<br>
+                  tam = Largura<br>
+                  color = Cor da linha<br>`,//explicacao
+                  `
+                  ENTITY.DRAW_LINE_ON_ENTITY(PLAYER.PLAYER_PED_ID(),3,'red')
+                  `//exemplo
+            ],
+
+
+            [
+                  'DEV',//namespace
+                  'GET_HOOKS_RUNNING',//nome do nativo
+                  'Retorna quantos hooks estão rodando atualmente, para monitoramento de desempenho',//descricao do nativo
+                  ' ',//parametros
+                  `Nenhum`,//explicacao
+                  `console.log(DEV.GET_HOOKS_RUNNING())`//exemplo
+            ],
+
+            [
+                  'DEV',//namespace
+                  'DRAW_FPS_DISPLAY',//nome do nativo
+                  'Exibe os FPS no canto inferior direito da tela, para monitoramento de desempenho',//descricao do nativo
+                  ' ',//parametros
+                  `Nenhum`,//explicacao
+                  `DEV.DRAW_FPS_DISPLAY();`//exemplo
+            ],
+
+
+            [
+                  '',//namespace
+                  '',//nome do nativo
+                  '',//descricao do nativo
+                  '',//parametros
+                  ``,//explicacao
+                  ``//exemplo
+            ],
+
+
+            [
+                  '',//namespace
+                  '',//nome do nativo
+                  '',//descricao do nativo
+                  '',//parametros
+                  ``,//explicacao
+                  ``//exemplo
+            ],
+
+            [
+                  '',//namespace
+                  '',//nome do nativo
+                  '',//descricao do nativo
+                  '',//parametros
+                  ``,//explicacao
+                  ``//exemplo
+            ],
+
+
+            [
+                  '',//namespace
+                  '',//nome do nativo
+                  '',//descricao do nativo
+                  '',//parametros
+                  ``,//explicacao
+                  ``//exemplo
+            ],
+
+
+            [
+                  '',//namespace
+                  '',//nome do nativo
+                  '',//descricao do nativo
+                  '',//parametros
+                  ``,//explicacao
+                  ``//exemplo
+            ],
+
+            [
+                  '',//namespace
+                  '',//nome do nativo
+                  '',//descricao do nativo
+                  '',//parametros
+                  ``,//explicacao
+                  ``//exemplo
+            ],
+
+
+            [
+                  '',//namespace
+                  '',//nome do nativo
+                  '',//descricao do nativo
+                  '',//parametros
+                  ``,//explicacao
+                  ``//exemplo
+            ],
+
+
+            [
+                  '',//namespace
+                  '',//nome do nativo
+                  '',//descricao do nativo
+                  '',//parametros
+                  ``,//explicacao
+                  ``//exemplo
+            ],
+
+            [
+                  '',//namespace
+                  '',//nome do nativo
+                  '',//descricao do nativo
+                  '',//parametros
+                  ``,//explicacao
+                  ``//exemplo
+            ],
+
+
+            [
+                  '',//namespace
+                  '',//nome do nativo
+                  '',//descricao do nativo
+                  '',//parametros
+                  ``,//explicacao
+                  ``//exemplo
+            ],
+
+
+            [
+                  '',//namespace
+                  '',//nome do nativo
+                  '',//descricao do nativo
+                  '',//parametros
+                  ``,//explicacao
+                  ``//exemplo
+            ],
+
+            [
+                  '',//namespace
+                  '',//nome do nativo
+                  '',//descricao do nativo
+                  '',//parametros
+                  ``,//explicacao
+                  ``//exemplo
+            ],
+
+
+            [
+                  '',//namespace
+                  '',//nome do nativo
+                  '',//descricao do nativo
+                  '',//parametros
+                  ``,//explicacao
+                  ``//exemplo
+            ],
+
+
+            [
+                  '',//namespace
+                  '',//nome do nativo
+                  '',//descricao do nativo
+                  '',//parametros
+                  ``,//explicacao
+                  ``//exemplo
+            ],
+
+            [
+                  '',//namespace
+                  '',//nome do nativo
+                  '',//descricao do nativo
+                  '',//parametros
+                  ``,//explicacao
+                  ``//exemplo
+            ],
+
+
+            [
+                  '',//namespace
+                  '',//nome do nativo
+                  '',//descricao do nativo
+                  '',//parametros
+                  ``,//explicacao
+                  ``//exemplo
+            ],
+
+
+            [
+                  '',//namespace
+                  '',//nome do nativo
+                  '',//descricao do nativo
+                  '',//parametros
+                  ``,//explicacao
+                  ``//exemplo
+            ],
+
+            [
+                  '',//namespace
+                  '',//nome do nativo
+                  '',//descricao do nativo
+                  '',//parametros
+                  ``,//explicacao
+                  ``//exemplo
+            ],
+
+
+            [
+                  '',//namespace
+                  '',//nome do nativo
+                  '',//descricao do nativo
+                  '',//parametros
+                  ``,//explicacao
+                  ``//exemplo
+            ],
+
+
+            [
+                  '',//namespace
+                  '',//nome do nativo
+                  '',//descricao do nativo
+                  '',//parametros
+                  ``,//explicacao
+                  ``//exemplo
+            ],
+
+
+      ]
+
+      var ctSlotsVazio = 0
+
+      itens.forEach(e => {
+
+
+            if (e[0] === '' && e[2] === '' && e[4] === '' && e[5] === '') {
+                  ctSlotsVazio++
+            }
+            else {
+                  if (e[0] === '') {
+                        console.log('Falta namespace: ' + e[1])
+                  }
+                  else if (!document.getElementById(e[0])) {
+                        var det = document.createElement('details')
+                        det.id = e[0]
+                        det.innerHTML = '<hr>'
+
+
+                        var sum = document.createElement('summary')
+                        sum.textContent = e[0]
+                        det.appendChild(sum)
+                        document.getElementById('nativos').appendChild(det)
+                  }
+                  if (e[2] === '') {
+                        console.log('Falta descricao: ' + e[1])
+                  }
+                  else if (e[5] === '') {
+                        console.log('Falta exemplo: ' + e[1])
+                  }
+                  else if (e[3] === '') {
+                        console.log('Falta os parametros: ' + e[1])
+                  }
+                  else if (e[4] === '') {
+                        console.log('Falta explicacao dos parametros: ' + e[1])
+                  }
+                  else {
+                        document.getElementById(e[0]).innerHTML += `
+    <details class="details2">
+        <summary>${e[1]}</summary><br>
+        <br>
+        <p>${e[2]}</p>
+        
+
+        <b>
+          <h5><br>Estrutura:</h5>
+        </b>
+        <div class="codigo">
+          <p>${e[0]}.${e[1]}(<b>${e[3]}</b>)</p>
+        </div>
+        
+
+
+        <b>
+          <h5><br>Parametros:</h5>
+        </b>
+        <div class="codigo">
+            ${e[4]}
+        </div>
+
+
+        <p><br>Exemplo:</p>
+        <div class="codigo" id="${e[1]}">
+            ${e[5]}
+            <br>
+            
+        </div>
+
+        <br>
+        <button onclick="copiarExemplo('${e[1]}')" id="bt_${e[1]}">Copiar Codigo do Exemplo</button>
+
+        <hr><br>
+      </details>
+    `
+                  }
+            }
+
+
+
+
+      });
+      console.log('Slots vazios: ' + ctSlotsVazio)
+
+function copiarExemplo(idd){
+      var t = document.getElementById(idd).innerText;
+      var txt = document.createElement('textarea')
+      txt.value=t
+      document.body.appendChild(txt)
+      txt.select()
+      txt.setSelectionRange(0,1000)
+      document.execCommand('copy')
+      txt.remove()
+
+      document.getElementById('bt_'+idd).innerHTML='Codigo copiado com sucesso!!';
+      document.getElementById('bt_'+idd).style.backgroundColor='green';
+      //
+      //
+      setTimeout(() => {
+            document.getElementById('bt_'+idd).innerHTML='Copiar Codigo do Exemplo';
+      document.getElementById('bt_'+idd).style.backgroundColor='#008cba';
+      }, 3000);
+      
+}
+
+
+
+
+</script>
+
+</html>
