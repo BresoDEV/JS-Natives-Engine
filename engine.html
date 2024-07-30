@@ -24,7 +24,7 @@
 
 
 
-    const fundo = MAP.DRAW_MAP('res/imgs/fundo.png', 2000, 2000)
+    const fundo = MAP.DRAW_MAP('res/imgs/fundo.jpg', 3000, 3000)
     GAME.SET_GAME_NAME('My First Game')
     MAP.DRAW_MINIMAP('m')
     DEV.DRAW_FPS_DISPLAY();
@@ -36,7 +36,7 @@
     CONTROLS.ADD_PLAYER_AWSD_MOVIMENT(6)
 
    
-    const inimigo = GRAPHICS.DRAW_SPRITE("res/imgs/inimigo.png", 900, 200, 100, 100)
+    const inimigo = GRAPHICS.DRAW_SPRITE("res/imgs/arvore.png", 900, 200, 100, 100)
     ENTITY.SET_AS_FRIEND(inimigo)
     CONTROLS.ADD_MOUSE_MOVE_TO_ENTITY(inimigo)
 
